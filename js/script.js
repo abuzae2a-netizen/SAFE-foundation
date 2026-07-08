@@ -1,213 +1,308 @@
-// ============================================================
-// MODAL CONTROLS
-// ============================================================
-function openModal(id) {
-    document.getElementById(id).classList.add('open');
-}
+// ============================================
+// SAFE Foundation Website - JavaScript
+// ============================================
 
-function closeModal(id) {
-    document.getElementById(id).classList.remove('open');
-}
+// ============================================
+// MOBILE MENU TOGGLE
+// ============================================
 
-window.onclick = function(e) {
-    if (e.target.classList.contains('modal')) {
-        e.target.classList.remove('open');
-    }
-}
-
-// ============================================================
-// MOBILE HAMBURGER MENU
-// ============================================================
 document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.getElementById('menuToggle');
     const mainNav = document.getElementById('mainNav');
-    
+
     if (menuToggle) {
         menuToggle.addEventListener('click', function() {
-            mainNav.classList.toggle('open');
+            mainNav.classList.toggle('active');
         });
     }
 
-    document.querySelectorAll('#mainNav a').forEach(link => {
-        link.addEventListener('click', () => {
-            if (mainNav) mainNav.classList.remove('open');
+    // Close menu when a link is clicked
+    const navLinks = mainNav ? mainNav.querySelectorAll('a') : [];
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            mainNav.classList.remove('active');
         });
     });
 });
 
-// ============================================================
-// LOCKED CONTENT NAVIGATION
-// ============================================================
+// ============================================
+// MODAL FUNCTIONS
+// ============================================
+
+function openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// Close modal when clicking outside of it
+window.addEventListener('click', function(event) {
+    if (event.target.classList.contains('modal')) {
+        event.target.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+});
+
+// ============================================
+// NAVIGATE TO LOCKED SECTION
+// ============================================
+
 function navigateToLockedSection(sectionId) {
     const section = document.getElementById(sectionId);
-    if (!section) return;
-
-    section.style.display = 'block';
-    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-    if (!donationMade) {
-        const lockContent = section.querySelector('.locked-content');
-        if (lockContent) {
-            lockContent.style.borderColor = '#cc7a00';
-            lockContent.style.borderWidth = '3px';
-            setTimeout(() => {
-                lockContent.style.borderColor = '#d1d5db';
-                lockContent.style.borderWidth = '2px';
-            }, 2000);
-        }
+    if (section) {
+        section.style.display = 'block';
+        section.scrollIntoView({ behavior: 'smooth' });
     }
+    return false;
 }
 
-// ============================================================
-// DONATION & UNLOCK SYSTEM
-// ============================================================
-let donationMade = false;
+// ============================================
+// FORM SUBMISSION
+// ============================================
 
-function simulateDonation() {
-    donationMade = true;
-    closeModal('donateModal');
-
-    document.querySelectorAll('.locked-content').forEach(el => {
-        el.style.display = 'none';
-    });
-
-    const sections = ['manifesto', 'parenting', 'marriage', 'documents'];
-    sections.forEach(id => {
-        const contentDiv = document.getElementById(id + 'Content');
-        if (contentDiv) {
-            contentDiv.innerHTML = getFullContent(id + 'Content');
-        }
-        const badge = document.getElementById(id + 'Badge');
-        if (badge) {
-            badge.style.display = 'inline-block';
-        }
-        const section = document.getElementById(id);
-        if (section) {
-            section.style.display = 'block';
-        }
-    });
-
-    alert('Thank you for your donation! All content is now unlocked.');
-}
-
-// ============================================================
-// CONTENT GENERATOR
-// ============================================================
-function getFullContent(contentId) {
-    if (contentId === 'manifestoContent') {
-        return `
-            <div class="doc-preview">
-                <div class="doc-header">
-                    <h2>SAFE COUNCIL MANIFESTO</h2>
-                    <p class="motto">"A Safe Community is a Safe Nation"</p>
-                </div>
-                <div class="section">
-                    <h3>PREAMBLE</h3>
-                    <p>We, the undersigned delegates representing political parties, tertiary institutions, the formal economy, the informal sector, and civil society, do hereby establish the Sustainable Approach for Equity Council (SAFE Council).</p>
-                </div>
-                <div class="section">
-                    <h3>MISSION STATEMENT</h3>
-                    <p>To promote transparency, accountability, and good governance by mobilising a diverse, independent coalition of delegates.</p>
-                </div>
-                <div class="section">
-                    <h3>CORE PRINCIPLES</h3>
-                    <ol style="margin-left:20px;">
-                        <li>Non-Partisanship</li>
-                        <li>Independence</li>
-                        <li>Evidence-Based Action</li>
-                        <li>Inclusivity</li>
-                        <li>Transparency</li>
-                        <li>Constructive Engagement</li>
-                    </ol>
-                </div>
-            </div>
-        `;
-    } else if (contentId === 'parentingContent') {
-        return `
-            <div class="doc-preview">
-                <div class="doc-header">
-                    <h2>SAFE FOUNDATION PARENTING CO-OP</h2>
-                    <p class="motto">A Democratic Community Structure for Parents</p>
-                </div>
-                <div class="section">
-                    <h3>CORE PRINCIPLE</h3>
-                    <p><strong>One parent, one vote.</strong> Every parent has equal say in decisions affecting their children and community.</p>
-                </div>
-                <div class="section">
-                    <h3>GOVERNANCE STRUCTURE</h3>
-                    <ul style="margin-left:20px;">
-                        <li>General Assembly of Parents</li>
-                        <li>Executive Committee (5 members)</li>
-                        <li>Women's Caucus</li>
-                        <li>Community Watch Committee</li>
-                        <li>Sanitation Committee</li>
-                    </ul>
-                </div>
-            </div>
-        `;
-    } else if (contentId === 'marriageContent') {
-        return `
-            <div class="doc-preview">
-                <div class="doc-header">
-                    <h2>SAFE FOUNDATION MARRIAGE COUNSELLING</h2>
-                    <p class="motto">Strengthening Families, Building Safe Communities</p>
-                </div>
-                <div class="section">
-                    <h3>PRE-MARITAL CURRICULUM (12 weeks)</h3>
-                    <p>Week 1-12: Introduction, Communication, Conflict Resolution, Financial, Family Planning, In-Laws, Roles, Emotions, Intimacy, Crises, Parenting, Examination</p>
-                </div>
-                <div class="section">
-                    <h3>POST-MARITAL CURRICULUM (12 weeks)</h3>
-                    <p>Transition, Communication, In-Laws, Finance, Conflicts, Pregnancy, Work-Life, Safety, Intimacy, Family, Vision, Examination</p>
-                </div>
-            </div>
-        `;
-    } else if (contentId === 'documentsContent') {
-        return `
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;">
-                <div style="background:var(--white);padding:20px;border-radius:12px;box-shadow:var(--shadow);text-align:center;">
-                    <i class="fas fa-file-pdf" style="font-size:2rem;color:var(--secondary);margin-bottom:10px;display:block;"></i>
-                    <h4>Manifesto</h4>
-                </div>
-                <div style="background:var(--white);padding:20px;border-radius:12px;box-shadow:var(--shadow);text-align:center;">
-                    <i class="fas fa-file-pdf" style="font-size:2rem;color:var(--secondary);margin-bottom:10px;display:block;"></i>
-                    <h4>Parenting Guide</h4>
-                </div>
-                <div style="background:var(--white);padding:20px;border-radius:12px;box-shadow:var(--shadow);text-align:center;">
-                    <i class="fas fa-file-pdf" style="font-size:2rem;color:var(--secondary);margin-bottom:10px;display:block;"></i>
-                    <h4>Marriage Handbook</h4>
-                </div>
-                <div style="background:var(--white);padding:20px;border-radius:12px;box-shadow:var(--shadow);text-align:center;">
-                    <i class="fas fa-file-pdf" style="font-size:2rem;color:var(--secondary);margin-bottom:10px;display:block;"></i>
-                    <h4>Volunteer Manual</h4>
-                </div>
-            </div>
-        `;
-    }
-    return '<p>Content loaded. Thank you for your support!</p>';
-}
-
-// ============================================================
-// FORM SUBMISSION HANDLER
-// ============================================================
-function submitForm(e, type) {
-    e.preventDefault();
-    let responseDiv = document.getElementById(type + 'Response');
+function submitForm(event, formType) {
+    event.preventDefault();
+    
+    const form = event.target;
+    const responseDiv = document.getElementById(formType + 'Response');
+    
+    // Collect form data
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+    
+    // Simulate form submission (in real implementation, this would send to a backend)
+    console.log(`${formType} form submitted:`, data);
+    
+    // Show success message
     if (responseDiv) {
         responseDiv.style.display = 'block';
-        responseDiv.innerHTML = '<i class="fas fa-check-circle"></i> Thank you! Your application has been received. We will contact you within 48 hours.';
-        e.target.reset();
-        setTimeout(() => { 
-            responseDiv.style.display = 'none'; 
-        }, 8000);
+        responseDiv.innerHTML = `✓ Thank you for joining! We'll contact you soon at ${data.email || 'your email'}.`;
+    }
+    
+    // Reset form
+    form.reset();
+    
+    // Hide message after 5 seconds
+    setTimeout(() => {
+        if (responseDiv) {
+            responseDiv.style.display = 'none';
+        }
+    }, 5000);
+}
+
+// ============================================
+// DONATION SIMULATION
+// ============================================
+
+function simulateDonation() {
+    const modal = document.getElementById('donateModal');
+    
+    if (modal) {
+        const modalContent = modal.querySelector('.modal-content');
+        const originalContent = modalContent.innerHTML;
+        
+        // Show thank you message
+        modalContent.innerHTML = `
+            <div style="text-align: center; padding: 40px 20px;">
+                <i class="fas fa-heart" style="font-size: 3rem; color: var(--accent); margin-bottom: 20px; animation: pulse 1.5s ease-in-out infinite;"></i>
+                <h2 style="color: var(--primary); margin: 16px 0;">Thank You!</h2>
+                <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 24px;">Your donation helps us build safer communities.</p>
+                <p style="color: var(--secondary); font-weight: 700; font-size: 1rem;">Donation will be processed shortly.</p>
+                <button onclick="closeAndRestore()" class="btn btn-primary" style="margin-top: 24px; width: auto;">Close</button>
+            </div>
+            <style>
+                @keyframes pulse {
+                    0%, 100% { transform: scale(1); }
+                    50% { transform: scale(1.2); }
+                }
+            </style>
+        `;
+        
+        // Store original content for restoration
+        window.modalOriginalContent = originalContent;
     }
 }
 
-// ============================================================
-// ESC KEY TO CLOSE MODAL
-// ============================================================
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        document.querySelectorAll('.modal.open').forEach(m => m.classList.remove('open'));
+function closeAndRestore() {
+    const modal = document.getElementById('donateModal');
+    if (modal && window.modalOriginalContent) {
+        modal.querySelector('.modal-content').innerHTML = window.modalOriginalContent;
+        closeModal('donateModal');
+    }
+}
+
+// ============================================
+// SMOOTH SCROLL FOR ANCHOR LINKS
+// ============================================
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        
+        // Skip if it's a javascript:void(0) link
+        if (href === '#' || href === 'javascript:void(0)') {
+            return;
+        }
+        
+        const target = document.querySelector(href);
+        if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+});
+
+// ============================================
+// ANIMATIONS ON SCROLL
+// ============================================
+
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// Observe mission cards, project cards, and form containers on page load
+document.addEventListener('DOMContentLoaded', function() {
+    const elementsToObserve = document.querySelectorAll(
+        '.mission-card, .project-card, .form-container, .hero-card'
+    );
+    
+    elementsToObserve.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
+});
+
+// ============================================
+// COUNTER ANIMATION FOR STATS
+// ============================================
+
+function animateCounter(element, target, duration = 2000) {
+    if (!element.textContent.match(/\d+/)) {
+        return;
+    }
+    
+    const start = parseInt(element.textContent) || 0;
+    const increment = (target - start) / (duration / 16);
+    let current = start;
+    
+    const counter = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            element.textContent = target;
+            clearInterval(counter);
+        } else {
+            element.textContent = Math.floor(current);
+        }
+    }, 16);
+}
+
+// Trigger counter animation when stats section is visible
+document.addEventListener('DOMContentLoaded', function() {
+    const statsSection = document.querySelector('.hero-stats');
+    if (statsSection) {
+        const statsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const numbers = entry.target.querySelectorAll('.number');
+                    numbers.forEach(num => {
+                        const value = parseInt(num.textContent.replace(/\D/g, ''));
+                        animateCounter(num, value, 1500);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        statsObserver.observe(statsSection);
     }
 });
+
+// ============================================
+// DONATION MODAL BUTTONS
+// ============================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Add click handlers to donation buttons
+    const donateLinks = document.querySelectorAll('a[onclick*="simulateDonation"]');
+    donateLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            openModal('donateModal');
+        });
+    });
+});
+
+// ============================================
+// FORM VALIDATION ENHANCEMENT
+// ============================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const forms = document.querySelectorAll('form');
+    
+    forms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            const inputs = form.querySelectorAll('input[required], select[required]');
+            let isValid = true;
+            
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    isValid = false;
+                    input.style.borderColor = 'var(--accent)';
+                } else {
+                    input.style.borderColor = 'var(--border)';
+                }
+            });
+            
+            if (!isValid) {
+                e.preventDefault();
+                alert('Please fill in all required fields.');
+            }
+        });
+        
+        // Reset border color on input
+        const inputs = form.querySelectorAll('input, select');
+        inputs.forEach(input => {
+            input.addEventListener('input', function() {
+                if (this.value.trim()) {
+                    this.style.borderColor = 'var(--border)';
+                }
+            });
+        });
+    });
+});
+
+// ============================================
+// WHATSAPP LINK ENHANCEMENT
+// ============================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const whatsappLink = document.querySelector('a[href*="wa.me"]');
+    if (whatsappLink && navigator.userAgent.match(/Android|iPhone|iPad|iPod/i)) {
+        // Mobile devices will automatically open WhatsApp
+    }
+});
+
+console.log('SAFE Foundation Website - All scripts loaded successfully!');
