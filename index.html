@@ -3,362 +3,1417 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SAFE Foundation | Sustainable Approach for Equity</title>
+    <title>SAFE Council | Sustainable Approach for Equity</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+        /* ============================================================
+                   BASE & VARIABLES
+                ============================================================ */
+        :root {
+            --primary: #1a365d;
+            --primary-dark: #0f2440;
+            --secondary: #008080;
+            --secondary-light: #e6f2f2;
+            --accent: #cc7a00;
+            --gold: #d4a017;
+            --light-bg: #f7f9fc;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --white: #ffffff;
+            --shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.1);
+            --radius: 16px;
+            --radius-sm: 8px;
+            --transition: 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* ============================================================
+                   TYPOGRAPHY
+                ============================================================ */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+        .section-title span {
+            color: var(--secondary);
+        }
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 2.5rem auto;
+        }
+
+        /* ============================================================
+                   BUTTONS
+                ============================================================ */
+        .btn {
+            display: inline-block;
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition);
+            text-decoration: none !important;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(26, 54, 93, 0.3);
+        }
+        .btn-secondary {
+            background: var(--secondary);
+            color: var(--white);
+        }
+        .btn-secondary:hover {
+            background: #006666;
+            transform: translateY(-2px);
+        }
+        .btn-accent {
+            background: var(--accent);
+            color: var(--white);
+        }
+        .btn-accent:hover {
+            background: #a86200;
+            transform: translateY(-2px);
+        }
+        .btn-gold {
+            background: var(--gold);
+            color: var(--white);
+        }
+        .btn-gold:hover {
+            background: #b8890e;
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+        .btn-small {
+            padding: 8px 20px;
+            font-size: 0.85rem;
+        }
+        .btn-white-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+        }
+        .btn-white-outline:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        /* ============================================================
+                   HEADER & NAVIGATION
+                ============================================================ */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            padding: 8px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo img {
+            height: 48px;
+            width: auto;
+        }
+        .logo-text {
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: var(--primary);
+        }
+        .logo-text span {
+            color: var(--secondary);
+        }
+        .logo-sub {
+            display: block;
+            font-size: 0.6rem;
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        nav > a {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            padding: 8px 0;
+            cursor: pointer;
+        }
+        nav > a:hover {
+            color: var(--primary);
+        }
+
+        /* ---- Dropdown ---- */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown > a {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            padding: 8px 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .dropdown > a:hover {
+            color: var(--primary);
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            min-width: 220px;
+            box-shadow: var(--shadow-lg);
+            border-radius: 12px;
+            padding: 8px 0;
+            z-index: 200;
+            border: 1px solid #e2e8f0;
+        }
+        .dropdown-content a {
+            display: block;
+            padding: 10px 20px;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background 0.2s;
+            cursor: pointer;
+        }
+        .dropdown-content a:hover {
+            background: var(--light-bg);
+            color: var(--primary);
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown .arrow {
+            font-size: 0.7rem;
+            margin-left: 4px;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* ============================================================
+                   HERO
+                ============================================================ */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: 80px 0 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            right: -20%;
+            top: -20%;
+            width: 60%;
+            height: 120%;
+            background: rgba(0, 128, 128, 0.08);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+        .hero h1 span {
+            color: var(--gold);
+        }
+        .hero p {
+            font-size: 1.15rem;
+            opacity: 0.9;
+            margin: 20px 0 32px;
+        }
+        .hero .motto {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+        .hero .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.12);
+            padding: 4px 18px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            margin-bottom: 16px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 32px;
+            margin-top: 32px;
+            flex-wrap: wrap;
+        }
+        .hero-stats .stat .number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--gold);
+        }
+        .hero-stats .stat .label {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .hero-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 32px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(4px);
+        }
+        .hero-card i {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+        .hero-card h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+        .hero-card p {
+            opacity: 0.9;
+        }
+
+        /* ============================================================
+                   SECTIONS
+                ============================================================ */
+        section {
+            padding: 70px 0;
+        }
+        .bg-light {
+            background: var(--light-bg);
+        }
+        .bg-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+        .bg-primary .section-title {
+            color: var(--white);
+        }
+        .bg-primary .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* ============================================================
+                   MISSION CARDS
+                ============================================================ */
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+            margin-top: 32px;
+        }
+        .mission-card {
+            background: var(--white);
+            padding: 28px 24px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--secondary);
+            transition: transform 0.2s;
+            text-align: left;
+        }
+        .mission-card:hover {
+            transform: translateY(-4px);
+        }
+        .mission-card .icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 12px;
+        }
+        .mission-card h3 {
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+        }
+        .mission-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* ============================================================
+                   PROJECTS
+                ============================================================ */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 32px;
+        }
+        .project-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+        .project-card:hover {
+            transform: translateY(-6px);
+        }
+        .project-card .project-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--white);
+        }
+        .project-card .content {
+            padding: 24px;
+        }
+        .project-card .content h3 {
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .project-card .content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* ============================================================
+                   LOCKED CONTENT
+                ============================================================ */
+        .locked-content {
+            background: var(--light-bg);
+            border: 2px dashed #d1d5db;
+            border-radius: var(--radius);
+            padding: 40px;
+            text-align: center;
+            margin-top: 32px;
+        }
+        .locked-content .lock-icon {
+            font-size: 3rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+        .locked-content h3 {
+            margin-bottom: 8px;
+        }
+        .locked-content p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+
+        /* ============================================================
+                   DOCUMENT PREVIEW
+                ============================================================ */
+        .doc-preview {
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            padding: 40px;
+            margin-top: 32px;
+            max-height: 600px;
+            overflow-y: auto;
+            border: 1px solid #e2e8f0;
+        }
+        .doc-preview .doc-header {
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+        }
+        .doc-preview .doc-header h2 {
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+        }
+        .doc-preview .doc-header .motto {
+            color: var(--gold);
+            font-style: italic;
+        }
+        .doc-preview .section {
+            margin-bottom: 20px;
+        }
+        .doc-preview .section h3 {
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        .doc-preview .section p {
+            color: var(--text-dark);
+        }
+
+        /* ============================================================
+                   UNLOCKED BADGE
+                ============================================================ */
+        .unlocked-badge {
+            display: inline-block;
+            background: #16a34a;
+            color: var(--white);
+            padding: 4px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 12px;
+        }
+
+        /* ============================================================
+                   FORMS
+                ============================================================ */
+        .form-container {
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .form-container h3 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #d1d5db;
+            border-radius: var(--radius-sm);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border 0.2s;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.1);
+        }
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        /* ============================================================
+                   MODAL
+                ============================================================ */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto;
+            padding: 40px 20px;
+        }
+        .modal.open {
+            display: flex;
+        }
+        .modal-content {
+            background: var(--white);
+            padding: 40px 32px;
+            border-radius: 24px;
+            max-width: 800px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .modal-content .close {
+            position: sticky;
+            top: 0;
+            float: right;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-muted);
+            background: none;
+            border: none;
+            z-index: 10;
+        }
+        .modal-content .close:hover {
+            color: var(--text-dark);
+        }
+        .modal-content h2 {
+            margin-bottom: 16px;
+            color: var(--primary);
+        }
+
+        /* ============================================================
+                   FOOTER
+                ============================================================ */
+        footer {
+            background: #0f1e2e;
+            color: #94a3b8;
+            padding: 28px 0;
+            border-top: 1px solid #1e3a5f;
+        }
+        footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        footer .legal {
+            font-size: 0.75rem;
+            opacity: 0.7;
+        }
+        footer a {
+            color: #94a3b8;
+            text-decoration: none;
+        }
+        footer a:hover {
+            color: var(--white);
+        }
+
+        /* ============================================================
+                   RESPONSIVE
+                ============================================================ */
+        @media (max-width: 992px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                padding: 16px 0;
+                gap: 12px;
+            }
+            nav.open {
+                display: flex;
+            }
+            .hamburger {
+                display: block;
+            }
+            .dropdown {
+                width: 100%;
+            }
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                border: none;
+                padding-left: 20px;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .form-container {
+                padding: 24px;
+            }
+            .doc-preview {
+                padding: 20px;
+            }
+            .hero-stats {
+                gap: 16px;
+            }
+        }
+
+        @media print {
+            header,
+            .hero,
+            footer,
+            .btn,
+            .modal {
+                display: none !important;
+            }
+            body {
+                background: white;
+            }
+            .container {
+                max-width: 100%;
+                padding: 0;
+            }
+            .locked-content {
+                border: none;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<header>
-    <div class="container">
-        <div class="logo">
+    <!-- ============================================================
+    HEADER
+    ============================================================ -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.png" alt="SAFE Council Logo" onerror="this.style.display='none'; this.outerHTML='<span style=\'background:#1a365d;color:#fff;padding:8px 14px;border-radius:12px;font-weight:800;\'>SAFE</span>';" />
+                <div>
+                    <span class="logo-text">SAFE <span>Council</span></span>
+                    <span class="logo-sub">Sustainable Approach for Equity</span>
+                </div>
+            </div>
+            <button class="hamburger" id="menuToggle"><i class="fas fa-bars"></i></button>
+            <nav id="mainNav">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <div class="dropdown">
+                    <a href="javascript:void(0)">SAFE Council <span class="arrow">▼</span></a>
+                    <div class="dropdown-content">
+                        <a href="#council">Overview</a>
+                        <a href="#manifesto" onclick="navigateToLockedSection('manifesto')">Manifesto</a>
+                        <a href="#documents" onclick="navigateToLockedSection('documents')">All Documents</a>
+                    </div>
+                </div>
+                <a href="#forms">Join Us</a>
+                <a href="#contact">Contact</a>
+                <a href="https://safefoundationafrica.org/product/general-single-donation/" target="_blank" class="btn btn-primary btn-small">Donate</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============================================================
+    HERO
+    ============================================================ -->
+    <section class="hero">
+        <div class="container">
             <div>
-                <span class="logo-text">SAFE <span>Foundation</span></span>
-                <span class="logo-sub">Sustainable Approach for Equity</span>
-            </div>
-        </div>
-        <button class="hamburger" id="menuToggle"><i class="fas fa-bars"></i></button>
-        <nav id="mainNav">
-            <a href="#mission">Mission</a>
-            <a href="#projects">Projects</a>
-            <div class="dropdown">
-                <a href="javascript:void(0)">SAFE Council <span class="arrow">▼</span></a>
-                <div class="dropdown-content">
-                    <a href="#council">Overview</a>
-                    <a href="#manifesto" onclick="navigateToLockedSection('manifesto')">Manifesto</a>
-                    <a href="#parenting" onclick="navigateToLockedSection('parenting')">Parenting Co-op</a>
-                    <a href="#marriage" onclick="navigateToLockedSection('marriage')">Marriage Counselling</a>
-                    <a href="#documents" onclick="navigateToLockedSection('documents')">All Documents</a>
+                <div class="badge"><i class="fas fa-shield-alt"></i> Est. 2019 · Registered NGO</div>
+                <p class="motto">"A Safe Community is a Safe Nation"</p>
+                <h1>Help Us Create A Peaceful And <span>Inequality-Free</span> Society</h1>
+                <p>SAFE Foundation is committed to building safe communities through our core missions: <strong>Community Development</strong> and <strong>Good Governance</strong>.</p>
+                <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:24px;">
+                    <a href="#forms" class="btn btn-accent"><i class="fas fa-hand-heart"></i> Join as Volunteer</a>
+                    <a href="https://safefoundationafrica.org/product/general-single-donation/" target="_blank" class="btn btn-white-outline">Make a Donation</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat"><span class="number">5+</span><div class="label">Years Serving</div></div>
+                    <div class="stat"><span class="number">12</span><div class="label">Northern States</div></div>
+                    <div class="stat"><span class="number">3</span><div class="label">Sister Orgs (USA, UK, India)</div></div>
+                    <div class="stat"><span class="number">2024</span><div class="label">SAFE Council Est.</div></div>
                 </div>
             </div>
-            <a href="#forms">Join Us</a>
-            <a href="#contact">Contact</a>
-            <a href="#" onclick="openModal('donateModal'); return false;" class="btn btn-primary btn-small">Donate</a>
-        </nav>
-    </div>
-</header>
+            <div class="hero-card">
+                <i class="fas fa-check-circle"></i>
+                <h3>SAFE Council</h3>
+                <p>Governance & Civic Engagement Arm</p>
+                <p style="font-size:0.9rem;opacity:0.7;margin-top:8px;">Delegates from all parties · INEC accreditation pending</p>
+                <a href="#council" class="btn btn-accent" style="margin-top:16px;">Learn More</a>
+            </div>
+        </div>
+    </section>
 
-<section class="hero">
-    <div class="container">
-        <div>
-            <div class="badge"><i class="fas fa-shield-alt"></i> Est. 2019 · Registered NGO</div>
-            <p class="motto">"A Safe Community is a Safe Nation"</p>
-            <h1>Help Us Create A Peaceful And <span>Inequality-Free</span> Society</h1>
-            <p>SAFE Foundation is committed to building safe communities through five core missions: Safe Haven, Education, Climate Action, Community Development, and Good Governance.</p>
-            <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:24px;">
-                <a href="#forms" class="btn btn-accent"><i class="fas fa-hand-heart"></i> Join as Volunteer</a>
-                <a href="#" onclick="openModal('donateModal'); return false;" class="btn btn-white-outline">Make a Donation</a>
-            </div>
-            <div class="hero-stats">
-                <div class="stat"><span class="number">5+</span><div class="label">Years Serving</div></div>
-                <div class="stat"><span class="number">12</span><div class="label">Northern States</div></div>
-                <div class="stat"><span class="number">3</span><div class="label">Sister Orgs</div></div>
-                <div class="stat"><span class="number">2024</span><div class="label">SAFE Council Est.</div></div>
-            </div>
-        </div>
-        <div class="hero-card">
-            <i class="fas fa-check-circle"></i>
-            <h3>SAFE Council</h3>
-            <p>Governance & Election Observation Arm</p>
-            <p style="font-size:0.9rem;opacity:0.7;margin-top:8px;">Delegates from all parties</p>
-            <a href="#council" class="btn btn-accent" style="margin-top:16px;">Learn More</a>
-        </div>
-    </div>
-</section>
+    <!-- ============================================================
+    ABOUT / MISSION
+    ============================================================ -->
+    <section id="about">
+        <div class="container text-center">
+            <h2 class="section-title">About <span>Us</span></h2>
+            <p class="section-subtitle">SAFE Foundation is a non-profit, grassroots organization dedicated to creating opportunities, restoring hope, and building stronger communities across Northern Nigeria.</p>
 
-<section id="mission">
-    <div class="container text-center">
-        <h2 class="section-title">Our <span>Mission</span></h2>
-        <p class="section-subtitle">We are committed to building safe communities through five core pillars of action.</p>
-        <div class="mission-grid">
-            <div class="mission-card">
-                <div class="icon"><i class="fas fa-home"></i></div>
-                <h3>Safe Haven</h3>
-                <p>Providing safe shelter and care for vulnerable, homeless, and orphaned children through our Bait Noor project.</p>
+            <div style="background:var(--light-bg);padding:32px;border-radius:var(--radius);text-align:left;margin-top:24px;">
+                <h3 style="color:var(--primary);margin-bottom:12px;">SAFE Council: Our Governance & Civic Engagement Arm</h3>
+                <p style="font-size:1.05rem;line-height:1.8;color:var(--text-dark);">
+                    SAFE Council is a citizen-led initiative, operating under the SAFE Foundation umbrella, that brings together Nigerians from all walks of life – political parties, universities, businesses, and communities – to support our government in delivering better results for our people.
+                </p>
+                <p style="font-size:1.05rem;line-height:1.8;color:var(--text-dark);margin-top:12px;">
+                    We believe that when citizens and government work together, we build stronger communities and a more prosperous nation. Our role is to provide constructive, evidence-based feedback that helps public officials identify what's working, address challenges, and continuously improve service delivery.
+                </p>
+                <p style="font-size:1.05rem;line-height:1.8;color:var(--text-dark);margin-top:12px;font-weight:600;color:var(--primary);">
+                    We are not an opposition group. We are <strong>partners in national development</strong> – committed to ensuring that public resources are managed effectively, policies are implemented efficiently, and every Nigerian feels the impact of good governance in their daily lives.
+                </p>
             </div>
-            <div class="mission-card">
-                <div class="icon"><i class="fas fa-graduation-cap"></i></div>
-                <h3>Education</h3>
-                <p>Supporting girl child education, literacy programs, and vocational training for youth.</p>
-            </div>
-            <div class="mission-card">
-                <div class="icon"><i class="fas fa-tree"></i></div>
-                <h3>Climate Action</h3>
-                <p>Promoting eco-friendly practices, tree planting, and green initiatives for our communities.</p>
-            </div>
-            <div class="mission-card">
-                <div class="icon"><i class="fas fa-people-arrows"></i></div>
-                <h3>Community Development</h3>
-                <p>Strengthening families through marriage counselling, dialogue, and community initiatives.</p>
-            </div>
-            <div class="mission-card">
-                <div class="icon"><i class="fas fa-gavel"></i></div>
-                <h3>Good Governance</h3>
-                <p>Promoting transparency, accountability, and civic participation through election observation.</p>
-            </div>
-        </div>
-    </div>
-</section>
 
-<section id="projects" class="bg-light">
-    <div class="container text-center">
-        <h2 class="section-title">Our <span>Projects</span></h2>
-        <p class="section-subtitle">High-value, long-term projects that create lasting change.</p>
-        <div class="project-grid">
-            <div class="project-card">
-                <div class="project-image" style="background:linear-gradient(135deg, #1a365d, #2d4a7a);"><i class="fas fa-home"></i></div>
-                <div class="content">
-                    <h3>Safe Haven</h3>
-                    <p>Safe home for vulnerable and orphaned children.</p>
+            <h3 style="margin-top:40px;color:var(--primary);">Our Mission Areas</h3>
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <div class="icon"><i class="fas fa-people-arrows"></i></div>
+                    <h3>Community Development</h3>
+                    <p>Strengthening families through marriage counselling, parent-child dialogue, community watch, neighbourhood cleanup, and family sensitization initiatives.</p>
                 </div>
-            </div>
-            <div class="project-card">
-                <div class="project-image" style="background:linear-gradient(135deg, #008080, #00a0a0);"><i class="fas fa-female"></i></div>
-                <div class="content">
-                    <h3>Girl Child Education</h3>
-                    <p>Supporting girls for final exams.</p>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-image" style="background:linear-gradient(135deg, #16a34a, #15803d);"><i class="fas fa-tree"></i></div>
-                <div class="content">
-                    <h3>Climate Action</h3>
-                    <p>Tree planting and eco-friendly practices.</p>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-image" style="background:linear-gradient(135deg, #d4a017, #b8890e);"><i class="fas fa-ring"></i></div>
-                <div class="content">
-                    <h3>Marriage Counselling</h3>
-                    <p>12-week pre and post-marital programs.</p>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-image" style="background:linear-gradient(135deg, #cc7a00, #a86200);"><i class="fas fa-people-arrows"></i></div>
-                <div class="content">
-                    <h3>Community Watch</h3>
-                    <p>Safety patrols and cleanup initiatives.</p>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-image" style="background:linear-gradient(135deg, #1a365d, #0f2440);"><i class="fas fa-vote-yea"></i></div>
-                <div class="content">
-                    <h3>Election Observation</h3>
-                    <p>INEC-accredited citizen observers.</p>
+                <div class="mission-card">
+                    <div class="icon"><i class="fas fa-gavel"></i></div>
+                    <h3>Good Governance</h3>
+                    <p>Promoting transparency, accountability, and civic participation through election observation, FOI advocacy, and cross-party oversight.</p>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="council">
-    <div class="container">
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;">
-            <div>
-                <span style="background:#00808020;padding:4px 16px;border-radius:50px;font-weight:700;font-size:0.8rem;color:var(--secondary);">EST. 2024</span>
-                <h2 style="font-size:2.5rem;font-weight:800;margin:12px 0 8px;">SAFE <span style="color:var(--secondary);">Council</span></h2>
-                <p style="font-size:1.1rem;color:var(--text-muted);">Governance and election observation arm.</p>
-                <ul style="list-style:none;margin:20px 0 28px;">
-                    <li style="padding:8px 0;display:flex;gap:12px;"><i style="color:var(--secondary);width:24px;" class="fas fa-check-circle"></i> Monitor government</li>
-                    <li style="padding:8px 0;display:flex;gap:12px;"><i style="color:var(--secondary);width:24px;" class="fas fa-check-circle"></i> Cross-party oversight</li>
-                    <li style="padding:8px 0;display:flex;gap:12px;"><i style="color:var(--secondary);width:24px;" class="fas fa-check-circle"></i> Election observers</li>
-                    <li style="padding:8px 0;display:flex;gap:12px;"><i style="color:var(--secondary);width:24px;" class="fas fa-check-circle"></i> Civic education</li>
-                    <li style="padding:8px 0;display:flex;gap:12px;"><i style="color:var(--secondary);width:24px;" class="fas fa-check-circle"></i> FOI advocacy</li>
+    <!-- ============================================================
+    PROJECTS
+    ============================================================ -->
+    <section id="projects" class="bg-light">
+        <div class="container text-center">
+            <h2 class="section-title">Our <span>Projects</span></h2>
+            <p class="section-subtitle">High-value, long-term projects that create lasting change in our communities.</p>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-image" style="background:linear-gradient(135deg, #d4a017, #b8890e);">
+                        <i class="fas fa-ring"></i>
+                    </div>
+                    <div class="content">
+                        <h3>Marriage Counselling</h3>
+                        <p>Mandatory 12-week pre-marital and post-marital counselling with certification, strengthening families and communities.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image" style="background:linear-gradient(135deg, #cc7a00, #a86200);">
+                        <i class="fas fa-people-arrows"></i>
+                    </div>
+                    <div class="content">
+                        <h3>Community Watch</h3>
+                        <p>Rotating safety patrols, neighbourhood cleanup, and community development initiatives.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image" style="background:linear-gradient(135deg, #1a365d, #0f2440);">
+                        <i class="fas fa-vote-yea"></i>
+                    </div>
+                    <div class="content">
+                        <h3>Election Observation</h3>
+                        <p>INEC-accredited citizen observers ensuring free, fair, and credible elections.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image" style="background:linear-gradient(135deg, #008080, #00a0a0);">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="content">
+                        <h3>Good Governance</h3>
+                        <p>Public scorecards, FOI requests, and cross-party advocacy for accountability.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    SAFE COUNCIL OVERVIEW
+    ============================================================ -->
+    <section id="council">
+        <div class="container">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;">
+                <div>
+                    <span style="background:#00808020;padding:4px 16px;border-radius:50px;font-weight:700;font-size:0.8rem;color:var(--secondary);">EST. 2024</span>
+                    <h2 style="font-size:2.5rem;font-weight:800;margin:12px 0 8px;">SAFE <span style="color:var(--secondary);">Council</span></h2>
+                    <p style="font-size:1.1rem;color:var(--text-muted);">Our governance and civic engagement arm — uniting delegates from all political parties, universities, and economic sectors.</p>
+                    <ul style="list-style:none;margin:20px 0 28px;">
+                        <li style="padding:8px 0;display:flex;gap:12px;"><i style="color:var(--secondary);width:24px;" class="fas fa-check-circle"></i> Provide constructive feedback to government</li>
+                        <li style="padding:8px 0;display:flex;gap:12px;"><i style="color:var(--secondary);width:24px;" class="fas fa-check-circle"></i> Cross-party oversight — no bias, no partisanship</li>
+                        <li style="padding:8px 0;display:flex;gap:12px;"><i style="color:var(--secondary);width:24px;" class="fas fa-check-circle"></i> Deploy trained election observers (INEC accredited)</li>
+                        <li style="padding:8px 0;display:flex;gap:12px;"><i style="color:var(--secondary);width:24px;" class="fas fa-check-circle"></i> House-to-house civic education and voter mobilisation</li>
+                        <li style="padding:8px 0;display:flex;gap:12px;"><i style="color:var(--secondary);width:24px;" class="fas fa-check-circle"></i> Public scorecards and FOI advocacy for accountability</li>
+                    </ul>
+                    <a href="#forms" class="btn btn-primary"><i class="fas fa-user-plus"></i> Join SAFE Council as Delegate</a>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+                    <div style="background:var(--light-bg);padding:24px;border-radius:12px;text-align:center;">
+                        <div style="font-size:2.2rem;font-weight:800;color:var(--primary);">58</div>
+                        <div style="font-size:0.9rem;color:var(--text-muted);">National Delegates</div>
+                    </div>
+                    <div style="background:var(--light-bg);padding:24px;border-radius:12px;text-align:center;">
+                        <div style="font-size:2.2rem;font-weight:800;color:var(--primary);">12</div>
+                        <div style="font-size:0.9rem;color:var(--text-muted);">Northern States</div>
+                    </div>
+                    <div style="background:var(--light-bg);padding:24px;border-radius:12px;text-align:center;">
+                        <div style="font-size:2.2rem;font-weight:800;color:var(--primary);">3</div>
+                        <div style="font-size:0.9rem;color:var(--text-muted);">Sister Orgs (USA, UK, India)</div>
+                    </div>
+                    <div style="background:var(--light-bg);padding:24px;border-radius:12px;text-align:center;">
+                        <div style="font-size:2.2rem;font-weight:800;color:var(--primary);">2027</div>
+                        <div style="font-size:0.9rem;color:var(--text-muted);">Election Observation Target</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    MANIFESTO (LOCKED)
+    ============================================================ -->
+    <section id="manifesto" style="display:none;">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Our <span>Manifesto</span> <span id="manifestoBadge" style="display:none;" class="unlocked-badge"><i class="fas fa-check-circle"></i> Unlocked</span></h2>
+                <p class="section-subtitle">The founding principles and commitments of SAFE Council.</p>
+            </div>
+            <div id="manifestoContent">
+                <div class="locked-content">
+                    <div class="lock-icon"><i class="fas fa-lock"></i></div>
+                    <h3>Content Locked</h3>
+                    <p>Our full manifesto is available exclusively to our donors. Your donation supports our mission of building stronger communities and a more prosperous Nigeria.</p>
+                    <a href="https://safefoundationafrica.org/product/general-single-donation/" target="_blank" class="btn btn-gold"><i class="fas fa-heart"></i> Donate to Unlock</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    DOCUMENTS (LOCKED)
+    ============================================================ -->
+    <section id="documents" style="display:none;" class="bg-light">
+        <div class="container text-center">
+            <h2 class="section-title">Our <span>Resources</span> <span id="documentsBadge" style="display:none;" class="unlocked-badge"><i class="fas fa-check-circle"></i> Unlocked</span></h2>
+            <p class="section-subtitle">Downloadable resources for volunteers, delegates, and couples.</p>
+
+            <!-- Document Description -->
+            <div style="background:var(--white);padding:24px;border-radius:var(--radius);box-shadow:var(--shadow);text-align:left;margin-top:24px;">
+                <p style="font-size:1rem;color:var(--text-dark);line-height:1.8;">
+                    <strong>SAFE Council has developed a comprehensive library of resources</strong> to support community development and good governance. These include:
+                </p>
+                <ul style="margin:16px 0 0 20px;line-height:2;color:var(--text-dark);">
+                    <li><strong>Full SAFE Council Manifesto</strong> – Outlining our principles, mandate, and commitment to collaborative governance.</li>
+                    <li><strong>Code of Conduct</strong> – Ethical guidelines for all delegates, volunteers, and staff.</li>
+                    <li><strong>Marriage Counselling Handbook</strong> – A complete guide for couples participating in our pre-marital and post-marital programs.</li>
+                    <li><strong>Volunteer Training Manual</strong> – Detailed training materials for marriage counsellors and community volunteers.</li>
+                    <li><strong>Marriage Certificate Template</strong> – Official certification for couples who complete our counselling program.</li>
+                    <li><strong>Full Marriage Counselling Curriculum</strong> – Week-by-week lesson plans for pre-marital and post-marital sessions.</li>
+                    <li><strong>Examination Papers</strong> – Sample questions and answer keys for marriage counselling assessments.</li>
                 </ul>
-                <a href="#forms" class="btn btn-primary"><i class="fas fa-user-plus"></i> Join SAFE Council</a>
+                <p style="margin-top:16px;font-size:1rem;color:var(--text-dark);line-height:1.8;">
+                    <strong>These documents are available exclusively to our donors.</strong> Your donation supports our mission of building stronger families, communities, and a more accountable Nigeria. By contributing, you gain access to these valuable resources and become a partner in national development.
+                </p>
+                <div style="text-align:center;margin-top:20px;">
+                    <a href="https://safefoundationafrica.org/product/general-single-donation/" target="_blank" class="btn btn-gold"><i class="fas fa-heart"></i> Donate to Unlock All Documents</a>
+                </div>
             </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
-                <div style="background:var(--light-bg);padding:24px;border-radius:12px;text-align:center;">
-                    <div style="font-size:2.2rem;font-weight:800;color:var(--primary);">58</div>
-                    <div style="font-size:0.9rem;color:var(--text-muted);">Delegates</div>
-                </div>
-                <div style="background:var(--light-bg);padding:24px;border-radius:12px;text-align:center;">
-                    <div style="font-size:2.2rem;font-weight:800;color:var(--primary);">12</div>
-                    <div style="font-size:0.9rem;color:var(--text-muted);">States</div>
-                </div>
-                <div style="background:var(--light-bg);padding:24px;border-radius:12px;text-align:center;">
-                    <div style="font-size:2.2rem;font-weight:800;color:var(--primary);">3</div>
-                    <div style="font-size:0.9rem;color:var(--text-muted);">Sister Orgs</div>
-                </div>
-                <div style="background:var(--light-bg);padding:24px;border-radius:12px;text-align:center;">
-                    <div style="font-size:2.2rem;font-weight:800;color:var(--primary);">2027</div>
-                    <div style="font-size:0.9rem;color:var(--text-muted);">Target</div>
+
+            <div id="documentsContent">
+                <div class="locked-content">
+                    <div class="lock-icon"><i class="fas fa-lock"></i></div>
+                    <h3>All Documents Locked</h3>
+                    <p>Our complete library is available exclusively to our donors. Your donation empowers our work and gives you access to these valuable resources.</p>
+                    <a href="https://safefoundationafrica.org/product/general-single-donation/" target="_blank" class="btn btn-gold"><i class="fas fa-heart"></i> Donate to Unlock</a>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="manifesto" style="display:none;">
-    <div class="container">
-        <div class="text-center">
-            <h2 class="section-title">Our <span>Manifesto</span></h2>
-            <p class="section-subtitle">The founding principles and commitments of SAFE Council.</p>
-        </div>
-        <div id="manifestoContent">
-            <div class="locked-content">
-                <div class="lock-icon"><i class="fas fa-lock"></i></div>
-                <h3>Content Locked</h3>
-                <p>Our full manifesto is available exclusively to our donors.</p>
-                <a href="#" onclick="openModal('donateModal'); return false;" class="btn btn-gold"><i class="fas fa-heart"></i> Donate to Unlock</a>
+    <!-- ============================================================
+    FORMS
+    ============================================================ -->
+    <section id="forms">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Join <span>Us</span></h2>
+                <p class="section-subtitle">Become a delegate, volunteer, or enrol in marriage counselling.</p>
             </div>
-        </div>
-    </div>
-</section>
 
-<section id="parenting" style="display:none;">
-    <div class="container text-center">
-        <h2 class="section-title">Parenting <span>Co-op</span></h2>
-        <p class="section-subtitle">A democratic community structure for parents.</p>
-        <div id="parentingContent">
-            <div class="locked-content">
-                <div class="lock-icon"><i class="fas fa-lock"></i></div>
-                <h3>Content Locked</h3>
-                <p>Our Parenting Co-op guide is available exclusively to our donors.</p>
-                <a href="#" onclick="openModal('donateModal'); return false;" class="btn btn-gold"><i class="fas fa-heart"></i> Donate to Unlock</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="marriage" style="display:none;">
-    <div class="container">
-        <div class="text-center">
-            <h2 class="section-title">Marriage <span>Counselling</span></h2>
-            <p class="section-subtitle">12-week pre-marital and post-marital curriculum.</p>
-        </div>
-        <div id="marriageContent">
-            <div class="locked-content">
-                <div class="lock-icon"><i class="fas fa-lock"></i></div>
-                <h3>Content Locked</h3>
-                <p>Our marriage counselling curriculum is available exclusively to our donors.</p>
-                <a href="#" onclick="openModal('donateModal'); return false;" class="btn btn-gold"><i class="fas fa-heart"></i> Donate to Unlock</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="documents" style="display:none;" class="bg-light">
-    <div class="container text-center">
-        <h2 class="section-title">Our <span>Documents</span></h2>
-        <p class="section-subtitle">Downloadable resources for volunteers and delegates.</p>
-        <div id="documentsContent">
-            <div class="locked-content">
-                <div class="lock-icon"><i class="fas fa-lock"></i></div>
-                <h3>All Documents Locked</h3>
-                <p>Our complete library is available exclusively to our donors.</p>
-                <a href="#" onclick="openModal('donateModal'); return false;" class="btn btn-gold"><i class="fas fa-heart"></i> Donate to Unlock</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="forms">
-    <div class="container">
-        <div class="text-center">
-            <h2 class="section-title">Join <span>Us</span></h2>
-            <p class="section-subtitle">Become a delegate, volunteer, or enrol in marriage counselling.</p>
-        </div>
-
-        <div class="form-container" style="margin-bottom:40px;">
-            <h3><i class="fas fa-user-tie" style="color:var(--secondary);margin-right:8px;"></i> Delegate Registration</h3>
-            <form id="delegateForm" onsubmit="submitForm(event, 'delegate')">
-                <div class="form-row">
-                    <div class="form-group"><label>Full Name *</label><input type="text" required /></div>
-                    <div class="form-group"><label>Email *</label><input type="email" required /></div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group"><label>Phone *</label><input type="tel" required /></div>
-                    <div class="form-group"><label>Sector *</label>
-                        <select required>
-                            <option value="">Select...</option>
-                            <option value="political">Political Party</option>
-                            <option value="tertiary">Tertiary Institution</option>
-                            <option value="formal">Formal Sector</option>
-                        </select>
+            <!-- Delegate Registration -->
+            <div class="form-container" style="margin-bottom:40px;">
+                <h3><i class="fas fa-user-tie" style="color:var(--secondary);margin-right:8px;"></i> Delegate Registration – SAFE Council</h3>
+                <p style="color:var(--text-muted);margin-bottom:20px;">For representatives from political parties, tertiary institutions, and formal/informal sectors.</p>
+                <form id="delegateForm" onsubmit="submitForm(event, 'delegate')">
+                    <div class="form-row">
+                        <div class="form-group"><label>Full Name *</label><input type="text" id="delName" required /></div>
+                        <div class="form-group"><label>Email *</label><input type="email" id="delEmail" required /></div>
                     </div>
-                </div>
-                <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit</button>
-            </form>
-            <div id="delegateResponse" style="margin-top:16px;display:none;padding:16px;border-radius:8px;background:#dcfce7;color:#166534;"></div>
-        </div>
-
-        <div class="form-container" style="margin-bottom:40px;">
-            <h3><i class="fas fa-hands-helping" style="color:var(--secondary);margin-right:8px;"></i> Volunteer Registration</h3>
-            <form id="volunteerForm" onsubmit="submitForm(event, 'volunteer')">
-                <div class="form-row">
-                    <div class="form-group"><label>Full Name *</label><input type="text" required /></div>
-                    <div class="form-group"><label>Email *</label><input type="email" required /></div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group"><label>Phone *</label><input type="tel" required /></div>
-                    <div class="form-group"><label>Role *</label>
-                        <select required>
-                            <option value="">Select...</option>
-                            <option value="counsellor">Marriage Counsellor</option>
-                            <option value="ambassador">Family Ambassador</option>
-                            <option value="observer">Election Observer</option>
-                        </select>
+                    <div class="form-row">
+                        <div class="form-group"><label>Phone *</label><input type="tel" id="delPhone" required /></div>
+                        <div class="form-group"><label>Sector *</label>
+                            <select id="delSector" required>
+                                <option value="">Select...</option>
+                                <option value="political">Political Party</option>
+                                <option value="tertiary">Tertiary Institution</option>
+                                <option value="formal">Formal Sector</option>
+                                <option value="informal">Informal Sector</option>
+                                <option value="civil">Civil Society / Media</option>
+                            </select>
+                        </div>
                     </div>
+                    <div class="form-group"><label>Organization/Party Name *</label><input type="text" id="delOrg" required /></div>
+                    <div class="form-group"><label>Why do you want to be a delegate? *</label><textarea id="delReason" required></textarea></div>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit Delegate Application</button>
+                </form>
+                <div id="delegateResponse" style="margin-top:16px;display:none;padding:16px;border-radius:8px;background:#dcfce7;color:#166534;"></div>
+            </div>
+
+            <!-- Volunteer Registration -->
+            <div class="form-container" style="margin-bottom:40px;">
+                <h3><i class="fas fa-hands-helping" style="color:var(--secondary);margin-right:8px;"></i> Volunteer Registration</h3>
+                <p style="color:var(--text-muted);margin-bottom:20px;">Join as a Marriage Counsellor, Family Ambassador, Street Captain, Election Observer, or Youth Mobilizer.</p>
+                <form id="volunteerForm" onsubmit="submitForm(event, 'volunteer')">
+                    <div class="form-row">
+                        <div class="form-group"><label>Full Name *</label><input type="text" id="volName" required /></div>
+                        <div class="form-group"><label>Email *</label><input type="email" id="volEmail" required /></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group"><label>Phone *</label><input type="tel" id="volPhone" required /></div>
+                        <div class="form-group"><label>Role *</label>
+                            <select id="volRole" required>
+                                <option value="">Select...</option>
+                                <option value="counsellor">Marriage Counsellor</option>
+                                <option value="ambassador">Family Ambassador</option>
+                                <option value="captain">Street Captain</option>
+                                <option value="educator">House-to-House Educator</option>
+                                <option value="observer">Election Observer</option>
+                                <option value="mobilizer">Youth Mobilizer</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group"><label>Why do you want to volunteer? *</label><textarea id="volReason" required></textarea></div>
+                    <button type="submit" class="btn btn-secondary"><i class="fas fa-paper-plane"></i> Submit Volunteer Application</button>
+                </form>
+                <div id="volunteerResponse" style="margin-top:16px;display:none;padding:16px;border-radius:8px;background:#dcfce7;color:#166534;"></div>
+            </div>
+
+            <!-- Marriage Counselling Enrollment -->
+            <div class="form-container">
+                <h3><i class="fas fa-ring" style="color:var(--secondary);margin-right:8px;"></i> Marriage Counselling Enrollment</h3>
+                <p style="color:var(--text-muted);margin-bottom:20px;">Free 12-week pre-marital or post-marital counselling with certification.</p>
+                <form id="marriageForm" onsubmit="submitForm(event, 'marriage')">
+                    <div class="form-row">
+                        <div class="form-group"><label>Partner 1 Name *</label><input type="text" id="marrName1" required /></div>
+                        <div class="form-group"><label>Partner 2 Name *</label><input type="text" id="marrName2" required /></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group"><label>Email *</label><input type="email" id="marrEmail" required /></div>
+                        <div class="form-group"><label>Phone *</label><input type="tel" id="marrPhone" required /></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group"><label>Programme *</label>
+                            <select id="marrProgram" required>
+                                <option value="">Select...</option>
+                                <option value="pre">Pre-Marital (engaged)</option>
+                                <option value="post">Post-Marital (married &lt; 2 years)</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>Location (City/State)</label><input type="text" id="marrLocation" /></div>
+                    </div>
+                    <button type="submit" class="btn btn-accent"><i class="fas fa-paper-plane"></i> Enrol Now</button>
+                </form>
+                <div id="marriageResponse" style="margin-top:16px;display:none;padding:16px;border-radius:8px;background:#dcfce7;color:#166534;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    FOOTER
+    ============================================================ -->
+    <footer id="contact">
+        <div class="container">
+            <div>
+                <strong style="color:var(--white);">SAFE Foundation</strong> — Sustainable Approach for Equity
+                <div class="legal">© 2026 · All rights reserved. Nigeria.</div>
+            </div>
+            <div style="text-align:right;">
+                <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:flex-end;">
+                    <a href="#about">About</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#council">SAFE Council</a>
+                    <a href="#forms">Join Us</a>
                 </div>
-                <button type="submit" class="btn btn-secondary"><i class="fas fa-paper-plane"></i> Submit</button>
-            </form>
-            <div id="volunteerResponse" style="margin-top:16px;display:none;padding:16px;border-radius:8px;background:#dcfce7;color:#166534;"></div>
-        </div>
-
-        <div class="form-container">
-            <h3><i class="fas fa-ring" style="color:var(--secondary);margin-right:8px;"></i> Marriage Counselling Enrollment</h3>
-            <form id="marriageForm" onsubmit="submitForm(event, 'marriage')">
-                <div class="form-row">
-                    <div class="form-group"><label>Partner 1 Name *</label><input type="text" required /></div>
-                    <div class="form-group"><label>Partner 2 Name *</label><input type="text" required /></div>
+                <div style="font-size:0.75rem;opacity:0.5;margin-top:4px;">
+                    <i class="fas fa-shield-alt"></i> A Safe Community is a Safe Nation
                 </div>
-                <div class="form-row">
-                    <div class="form-group"><label>Email *</label><input type="email" required /></div>
-                    <div class="form-group"><label>Phone *</label><input type="tel" required /></div>
+                <div style="font-size:0.75rem;margin-top:8px;color:#94a3b8;">
+                    Head Office: 666 Hausawa Bawo Road, Tarauni, Kano · Branch: Maiduguri, Borno
                 </div>
-                <button type="submit" class="btn btn-accent"><i class="fas fa-paper-plane"></i> Enrol Now</button>
-            </form>
-            <div id="marriageResponse" style="margin-top:16px;display:none;padding:16px;border-radius:8px;background:#dcfce7;color:#166534;"></div>
+                <div style="font-size:0.75rem;margin-top:4px;color:#94a3b8;">
+                    📞 08127337603 · 📧 <a href="mailto:safefoundation@gmail.com" style="color:#94a3b8;">safefoundation@gmail.com</a>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
+    </footer>
 
-<div class="modal" id="donateModal">
-    <div class="modal-content">
-        <button class="close" onclick="closeModal('donateModal')">&times;</button>
-        <i class="fas fa-heart" style="font-size:3rem;color:var(--accent);margin-bottom:12px;"></i>
-        <h2>Support SAFE Foundation</h2>
-        <p>Your donation unlocks our full library of documents and content.</p>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0;">
-            <a href="#" onclick="simulateDonation(); return false;" class="btn btn-gold">Donate ₦10,000</a>
-            <a href="#" onclick="simulateDonation(); return false;" class="btn btn-gold">Donate ₦25,000</a>
-            <a href="#" onclick="simulateDonation(); return false;" class="btn btn-gold">Donate ₦50,000</a>
-            <a href="#" onclick="simulateDonation(); return false;" class="btn btn-gold">Custom Amount</a>
-        </div>
-        <div style="margin-top:16px;">
-            <a href="https://wa.me/2348127337603" target="_blank" class="btn btn-secondary btn-small"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-            <a href="mailto:safefoundation@gmail.com" class="btn btn-primary btn-small"><i class="fas fa-envelope"></i> Email</a>
-        </div>
-    </div>
-</div>
+    <!-- ============================================================
+    SCRIPTS
+    ============================================================ -->
+    <script>
+        // ============================================================
+        // MODAL
+        // ============================================================
+        function openModal(id) {
+            document.getElementById(id).classList.add('open');
+        }
 
-<footer id="contact">
-    <div class="container">
-        <div>
-            <strong style="color:var(--white);">SAFE Foundation</strong> — Sustainable Approach for Equity
-            <div class="legal">© 2026 · All rights reserved. Nigeria.</div>
-        </div>
-        <div style="text-align:right;font-size:0.75rem;">
-            <div>📞 08127337603 · 📧 safefoundation@gmail.com</div>
-            <div style="margin-top:8px;">Kano, Nigeria</div>
-        </div>
-    </div>
-</footer>
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('open');
+        }
 
-<script src="js/script.js"></script>
+        window.onclick = function(e) {
+            if (e.target.classList.contains('modal')) {
+                e.target.classList.remove('open');
+            }
+        }
+
+        // ============================================================
+        // HAMBURGER
+        // ============================================================
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('mainNav').classList.toggle('open');
+        });
+
+        document.querySelectorAll('#mainNav a').forEach(link => {
+            link.addEventListener('click', () => document.getElementById('mainNav').classList.remove('open'));
+        });
+
+        // ============================================================
+        // NAVIGATE TO LOCKED SECTION
+        // ============================================================
+        function navigateToLockedSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (!section) return;
+
+            section.style.display = 'block';
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            if (!donationMade) {
+                const lockContent = section.querySelector('.locked-content');
+                if (lockContent) {
+                    lockContent.style.borderColor = '#cc7a00';
+                    lockContent.style.borderWidth = '3px';
+                    setTimeout(() => {
+                        lockContent.style.borderColor = '#d1d5db';
+                        lockContent.style.borderWidth = '2px';
+                    }, 2000);
+                }
+            }
+        }
+
+        // ============================================================
+        // DONATION & UNLOCK
+        // ============================================================
+        let donationMade = false;
+
+        function simulateDonation() {
+            donationMade = true;
+            closeModal('donateModal');
+
+            document.querySelectorAll('.locked-content').forEach(el => {
+                el.style.display = 'none';
+            });
+
+            const sections = ['manifesto', 'documents'];
+            sections.forEach(id => {
+                const contentDiv = document.getElementById(id + 'Content');
+                if (contentDiv) {
+                    contentDiv.innerHTML = getFullContent(id + 'Content');
+                }
+                const badge = document.getElementById(id + 'Badge');
+                if (badge) {
+                    badge.style.display = 'inline-block';
+                }
+                const section = document.getElementById(id);
+                if (section) {
+                    section.style.display = 'block';
+                }
+            });
+
+            alert('Thank you for your donation! All content is now unlocked.');
+        }
+
+        // ============================================================
+        // GET FULL CONTENT
+        // ============================================================
+        function getFullContent(contentId) {
+            if (contentId === 'manifestoContent') {
+                return `
+                        <div class="doc-preview">
+                            <div class="doc-header">
+                                <h2>SAFE COUNCIL MANIFESTO</h2>
+                                <p class="motto">"A Safe Community is a Safe Nation"</p>
+                            </div>
+                            <div class="section">
+                                <h3>PREAMBLE</h3>
+                                <p>We, the undersigned delegates representing political parties, tertiary institutions, the formal economy, the informal sector, and civil society, do hereby establish the Sustainable Approach for Equity Council (SAFE Council) as a non-governmental, non-political, and non-biased platform. Our shared purpose is to support the achievement of good governance and national development through constructive citizen engagement and collaborative oversight.</p>
+                                <p style="margin-top:12px;">We affirm that good governance is a collective responsibility. We reject partisanship, personal interest, and external influence. Our only loyalty is to the Constitution of the Federal Republic of Nigeria and the well-being of its citizens.</p>
+                            </div>
+                            <div class="section">
+                                <h3>MISSION STATEMENT</h3>
+                                <p>To strengthen Nigeria's democratic governance by bringing together diverse stakeholders – including representatives from political parties, tertiary institutions, and both formal and informal economic sectors – to participate in a shared national project: building a more transparent, accountable, and prosperous Nigeria.</p>
+                            </div>
+                            <div class="section">
+                                <h3>CORE PRINCIPLES</h3>
+                                <ol style="margin-left:20px;">
+                                    <li><strong>Non-Partisanship</strong> – No delegate shall act on behalf of any political party while executing oversight duties.</li>
+                                    <li><strong>Independence</strong> – We accept no funding or directives from any government, political party, or individual that would compromise our objectivity.</li>
+                                    <li><strong>Evidence-Based Action</strong> – Every report, alert, or recommendation must be supported by verifiable documents, site inspections, or sworn testimony.</li>
+                                    <li><strong>Inclusivity</strong> – Representation shall be equitable across geopolitical zones, genders, age groups, and economic sectors.</li>
+                                    <li><strong>Transparency</strong> – Our own finances, delegate lists, and methodologies shall be publicly accessible.</li>
+                                    <li><strong>Constructive Engagement</strong> – We seek to support government in delivering better results for the people. We offer actionable solutions alongside constructive feedback.</li>
+                                </ol>
+                            </div>
+                            <div class="section">
+                                <h3>OUR COMMITMENT</h3>
+                                <ul style="margin-left:20px;">
+                                    <li><strong>Amplify citizen voices</strong> to ensure public policies reflect community needs</li>
+                                    <li><strong>Promote transparency</strong> as a foundation for public trust and investor confidence</li>
+                                    <li><strong>Encourage accountability</strong> as a driver of efficient service delivery</li>
+                                    <li><strong>Foster dialogue</strong> between citizens and government at all levels</li>
+                                </ul>
+                            </div>
+                            <div style="margin-top:20px;text-align:center;">
+                                <a href="#" onclick="downloadManifestoPDF(); return false;" class="btn btn-primary"><i class="fas fa-file-pdf"></i> Download as PDF</a>
+                            </div>
+                        </div>
+                    `;
+            } else if (contentId === 'documentsContent') {
+                return `
+                        <div>
+                            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;">
+                                <div style="background:var(--white);padding:24px;border-radius:16px;box-shadow:var(--shadow);text-align:center;">
+                                    <i class="fas fa-file-alt" style="font-size:2.5rem;color:var(--secondary);"></i>
+                                    <h4 style="margin:8px 0;">Manifesto</h4>
+                                    <a href="#" onclick="downloadManifestoPDF(); return false;" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> Download PDF</a>
+                                </div>
+                                <div style="background:var(--white);padding:24px;border-radius:16px;box-shadow:var(--shadow);text-align:center;">
+                                    <i class="fas fa-gavel" style="font-size:2.5rem;color:var(--secondary);"></i>
+                                    <h4 style="margin:8px 0;">Code of Conduct</h4>
+                                    <a href="#" onclick="downloadCodeOfConductPDF(); return false;" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> Download PDF</a>
+                                </div>
+                                <div style="background:var(--white);padding:24px;border-radius:16px;box-shadow:var(--shadow);text-align:center;">
+                                    <i class="fas fa-ring" style="font-size:2.5rem;color:var(--secondary);"></i>
+                                    <h4 style="margin:8px 0;">Marriage Handbook</h4>
+                                    <a href="#" onclick="downloadMarriageHandbookPDF(); return false;" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> Download PDF</a>
+                                </div>
+                                <div style="background:var(--white);padding:24px;border-radius:16px;box-shadow:var(--shadow);text-align:center;">
+                                    <i class="fas fa-chalkboard-teacher" style="font-size:2.5rem;color:var(--secondary);"></i>
+                                    <h4 style="margin:8px 0;">Volunteer Training Manual</h4>
+                                    <a href="#" onclick="downloadTrainingManualPDF(); return false;" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> Download PDF</a>
+                                </div>
+                                <div style="background:var(--white);padding:24px;border-radius:16px;box-shadow:var(--shadow);text-align:center;">
+                                    <i class="fas fa-certificate" style="font-size:2.5rem;color:var(--secondary);"></i>
+                                    <h4 style="margin:8px 0;">Marriage Certificate</h4>
+                                    <a href="#" onclick="downloadCertificatePDF(); return false;" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> Download PDF</a>
+                                </div>
+                                <div style="background:var(--white);padding:24px;border-radius:16px;box-shadow:var(--shadow);text-align:center;">
+                                    <i class="fas fa-file-pdf" style="font-size:2.5rem;color:var(--secondary);"></i>
+                                    <h4 style="margin:8px 0;">Full Curriculum</h4>
+                                    <a href="#" onclick="downloadCurriculumPDF(); return false;" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> Download PDF</a>
+                                </div>
+                                <div style="background:var(--white);padding:24px;border-radius:16px;box-shadow:var(--shadow);text-align:center;">
+                                    <i class="fas fa-file-pdf" style="font-size:2.5rem;color:var(--secondary);"></i>
+                                    <h4 style="margin:8px 0;">Examination Papers</h4>
+                                    <a href="#" onclick="downloadExamsPDF(); return false;" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> Download PDF</a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+            }
+            return '<p>Content loaded. Thank you for your support!</p>';
+        }
+
+        // ============================================================
+        // PDF DOWNLOAD FUNCTIONS
+        // ============================================================
+        function downloadPDF(content, filename) {
+            const html = `
+                <!DOCTYPE html>
+                <html>
+                <head><meta charset="UTF-8"><title>${filename}</title>
+                <style>
+                    body { font-family: 'Georgia', 'Times New Roman', serif; padding: 40px; max-width: 800px; margin: auto; color: #1a202c; }
+                    .header { text-align: center; border-bottom: 2px solid #008080; padding-bottom: 20px; margin-bottom: 30px; }
+                    .header h1 { color: #1a365d; font-size: 28px; margin-bottom: 4px; }
+                    .header .motto { color: #d4a017; font-style: italic; font-size: 18px; }
+                    .section { margin-bottom: 24px; }
+                    .section h2 { color: #1a365d; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; }
+                    .section p { line-height: 1.8; }
+                    .footer { text-align: center; margin-top: 40px; font-size: 14px; color: #64748b; border-top: 1px solid #e2e8f0; padding-top: 20px; }
+                    ul, ol { line-height: 1.8; }
+                </style>
+                </head>
+                <body>
+                    <div class="header">
+                        <h1>SAFE FOUNDATION</h1>
+                        <p class="motto">"A Safe Community is a Safe Nation"</p>
+                        <p style="font-size:14px;color:#64748b;">Sustainable Approach for Equity</p>
+                    </div>
+                    ${content}
+                    <div class="footer">
+                        <p>SAFE Foundation · Kano, Nigeria · www.safefoundationafrica.org</p>
+                        <p>© ${new Date().getFullYear()} · All rights reserved.</p>
+                    </div>
+                </body>
+                </html>
+            `;
+            const blob = new Blob([html], { type: 'application/pdf' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = filename + '.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(link.href);
+        }
+
+        function downloadManifestoPDF() {
+            downloadPDF(`
+                    <div class="section"><h2>PREAMBLE</h2><p>We, the undersigned delegates representing political parties, tertiary institutions, the formal economy, the informal sector, and civil society, do hereby establish the Sustainable Approach for Equity Council (SAFE Council) as a non-governmental, non-political, and non-biased platform. Our shared purpose is to support the achievement of good governance and national development through constructive citizen engagement and collaborative oversight.</p></div>
+                    <div class="section"><h2>MISSION</h2><p>To strengthen Nigeria's democratic governance by bringing together diverse stakeholders – including representatives from political parties, tertiary institutions, and both formal and informal economic sectors – to participate in a shared national project: building a more transparent, accountable, and prosperous Nigeria.</p></div>
+                    <div class="section"><h2>CORE PRINCIPLES</h2><ol><li>Non-Partisanship</li><li>Independence</li><li>Evidence-Based Action</li><li>Inclusivity</li><li>Transparency</li><li>Constructive Engagement</li></ol></div>
+                    <div class="section"><h2>OUR COMMITMENT</h2><ul><li>Amplify citizen voices</li><li>Promote transparency</li><li>Encourage accountability</li><li>Foster dialogue</li></ul></div>
+                `, 'SAFE_Council_Manifesto');
+        }
+
+        function downloadCodeOfConductPDF() {
+            downloadPDF(`
+                    <div class="section"><h2>CODE OF CONDUCT</h2><p>All delegates, staff, and volunteers shall:</p><ul><li>Act with honesty and integrity</li><li>Remain independent</li><li>Avoid conflicts of interest</li><li>Respect presumption of innocence</li><li>Protect confidential information</li></ul></div>
+                    <div class="section"><h2>PROHIBITED CONDUCT</h2><ul><li>Bribery or corruption</li><li>Partisan activity</li><li>Abuse of access</li><li>Harassment or discrimination</li><li>Unauthorised media communication</li></ul></div>
+                `, 'SAFE_Code_of_Conduct');
+        }
+
+        function downloadMarriageHandbookPDF() {
+            downloadPDF(`
+                    <div class="section"><h2>MARRIAGE COUNSELLING HANDBOOK</h2><p>Participant Edition</p></div>
+                    <div class="section"><h2>PRE-MARITAL (12 weeks)</h2><ul><li>Week 1: Introduction & Expectations</li><li>Week 2: Communication Skills</li><li>Week 3: Conflict Resolution</li><li>Week 4: Financial Management</li><li>Week 5: Family Planning</li><li>Week 6: In-Law Relationships</li><li>Week 7: Roles & Responsibilities</li><li>Week 8: Emotional Intelligence</li><li>Week 9: Intimacy & Affection</li><li>Week 10: Handling Crises</li><li>Week 11: Parenting Preparation</li><li>Week 12: Review & Examination</li></ul></div>
+                    <div class="section"><h2>POST-MARITAL (12 weeks)</h2><ul><li>Week 1: Transition Check-In</li><li>Week 2: Deepening Communication</li><li>Week 3: In-Law Challenges</li><li>Week 4: Financial Realities</li><li>Week 5: Conflict Case Studies</li><li>Week 6: Pregnancy & Parenting Prep</li><li>Week 7: Work-Life Balance</li><li>Week 8: Emotional Safety</li><li>Week 9: Intimacy After Wedding</li><li>Week 10: Extended Family & Community</li><li>Week 11: Long-Term Vision</li><li>Week 12: Review & Examination</li></ul></div>
+                `, 'SAFE_Marriage_Handbook');
+        }
+
+        function downloadTrainingManualPDF() {
+            downloadPDF(`
+                    <div class="section"><h2>VOLUNTEER TRAINING MANUAL</h2><p>Role: Volunteer Marriage Counsellor</p></div>
+                    <div class="section"><h2>CORE PRINCIPLES</h2><ul><li>Confidentiality</li><li>Non-Judgment</li><li>Impartiality</li><li>Empowerment</li><li>Cultural Sensitivity</li><li>Know Your Limits</li></ul></div>
+                    <div class="section"><h2>SKILLS</h2><ul><li>Active listening</li><li>Managing group dynamics</li><li>Handling conflict in sessions</li><li>Asking powerful questions</li></ul></div>
+                    <div class="section"><h2>HANDLING DIFFICULT SITUATIONS</h2><ul><li>Domestic violence: Refer immediately</li><li>Dropouts: Offer solutions, allow withdrawal</li><li>Failed exams: Retake after 2 weeks</li></ul></div>
+                `, 'SAFE_Volunteer_Training_Manual');
+        }
+
+        function downloadCertificatePDF() {
+            downloadPDF(`
+                    <div class="section"><h2>CERTIFICATE OF MARRIAGE PREPARATION</h2><p>This is to certify that:</p><p><strong>_________________________ (Groom)</strong></p><p>and</p><p><strong>_________________________ (Bride)</strong></p><p>have successfully completed the SAFE Foundation Mandatory Pre-Marital Counselling Programme.</p><p>Duration: 12 weeks · Exam Score: ______%</p><p>Certificate Number: SAFE-MPC-2026-______</p><p>Date Issued: _________________</p><hr/><h2>CERTIFICATE OF MARRIAGE STRENGTHENING</h2><p>This is to certify that:</p><p><strong>_________________________ (Husband)</strong></p><p>and</p><p><strong>_________________________ (Wife)</strong></p><p>have successfully completed the SAFE Foundation Mandatory Post-Marital Counselling Programme.</p><p>Duration: 12 weeks · Exam Score: ______%</p><p>Certificate Number: SAFE-MSC-2026-______</p><p>Date Issued: _________________</p></div>
+                `, 'SAFE_Marriage_Certificate_Template');
+        }
+
+        function downloadCurriculumPDF() {
+            downloadPDF(`
+                    <div class="section"><h2>MARRIAGE COUNSELLING CURRICULUM</h2><p>Pre-Marital (12 Weeks)</p><ul><li>Week 1: Introduction & Expectations</li><li>Week 2: Communication Skills</li><li>Week 3: Conflict Resolution</li><li>Week 4: Financial Management</li><li>Week 5: Family Planning</li><li>Week 6: In-Law Relationships</li><li>Week 7: Roles & Responsibilities</li><li>Week 8: Emotional Intelligence</li><li>Week 9: Intimacy & Affection</li><li>Week 10: Handling Crises</li><li>Week 11: Parenting Preparation</li><li>Week 12: Review & Examination</li></ul></div>
+                    <div class="section"><h2>Post-Marital (12 Weeks)</h2><ul><li>Week 1: Transition Check-In</li><li>Week 2: Deepening Communication</li><li>Week 3: In-Law Challenges</li><li>Week 4: Financial Realities</li><li>Week 5: Conflict Case Studies</li><li>Week 6: Pregnancy & Parenting Prep</li><li>Week 7: Work-Life Balance</li><li>Week 8: Emotional Safety</li><li>Week 9: Intimacy After Wedding</li><li>Week 10: Extended Family & Community</li><li>Week 11: Long-Term Vision</li><li>Week 12: Review & Examination</li></ul></div>
+                `, 'SAFE_Marriage_Curriculum');
+        }
+
+        function downloadExamsPDF() {
+            downloadPDF(`
+                    <div class="section"><h2>MARRIAGE EXAMINATION PAPERS</h2><p>Sample Questions - Pre-Marital</p><p><strong>Multiple Choice:</strong></p><p>1. What is the #1 cause of divorce? A) Physical intimacy B) Money disagreements C) In-law interference D) Religion → Answer: B</p>
+                    <p>2. Non-violent communication uses: "When you ___, I feel ___ because I need ___" → Answer: B</p>
+                    <p><strong>True/False:</strong></p><p>11. Marriage solves all personal problems. → FALSE</p><p>12. It is normal for couples to disagree. → TRUE</p><p>13. Financial secrets are acceptable. → FALSE</p>
+                    <hr/><p><strong>Sample Questions - Post-Marital</strong></p><p><strong>Multiple Choice:</strong></p><p>1. Most common adjustment in first year? A) Physical intimacy B) Combining habits C) Career changes D) Religion → Answer: B</p>
+                    <p><strong>True/False:</strong></p><p>11. First year is usually easy. → FALSE</p><p>12. Most problems are unique. → FALSE</p><p>13. Couples should budget together. → TRUE</p>
+                `, 'SAFE_Marriage_Examination_Papers');
+        }
+
+        // ============================================================
+        // FORM SUBMISSIONS
+        // ============================================================
+        function submitForm(e, type) {
+            e.preventDefault();
+            let responseDiv = document.getElementById(type + 'Response');
+            responseDiv.style.display = 'block';
+            responseDiv.innerHTML = '<i class="fas fa-check-circle"></i> Thank you! Your application has been received. We will contact you within 48 hours.';
+            e.target.reset();
+            setTimeout(() => { responseDiv.style.display = 'none'; }, 8000);
+        }
+
+        // ============================================================
+        // CLOSE MODAL ON ESC
+        // ============================================================
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal.open').forEach(m => m.classList.remove('open'));
+            }
+        });
+    </script>
+
 </body>
 </html>
