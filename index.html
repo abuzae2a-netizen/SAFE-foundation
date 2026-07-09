@@ -780,6 +780,13 @@
         }
 
         /* ============================================================
+                   CONTACT SECTION
+                ============================================================ */
+        #contact {
+            scroll-margin-top: var(--header-height);
+        }
+
+        /* ============================================================
                    FOOTER
                 ============================================================ */
         footer {
@@ -1418,9 +1425,48 @@
     </section>
 
     <!-- ============================================================
+    CONTACT FORM
+    ============================================================ -->
+    <section id="contact" style="scroll-margin-top: var(--header-height);">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Contact <span>Us</span></h2>
+                <p class="section-subtitle">Have a question, suggestion, or want to get involved? Send us a message.</p>
+            </div>
+
+            <div class="form-container">
+                <h3><i class="fas fa-envelope" style="color:var(--secondary);margin-right:6px;"></i> Send a Message</h3>
+                <p style="color:var(--text-muted);margin-bottom:16px;font-size:0.9rem;">We will get back to you as soon as possible.</p>
+                <form id="contactForm" onsubmit="submitContactForm(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contactName">Your Name *</label>
+                            <input type="text" id="contactName" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="contactEmail">Your Email *</label>
+                            <input type="email" id="contactEmail" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactSubject">Subject *</label>
+                        <input type="text" id="contactSubject" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Message *</label>
+                        <textarea id="contactMessage" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Message</button>
+                </form>
+                <div id="contactResponse" style="margin-top:12px;display:none;padding:12px;border-radius:8px;background:#dcfce7;color:#166534;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
     FOOTER
     ============================================================ -->
-    <footer id="contact">
+    <footer>
         <div class="container">
             <div>
                 <strong style="color:var(--white);font-size:0.95rem;">SAFE Foundation</strong>
@@ -1433,6 +1479,7 @@
                     <a href="#projects">Projects</a>
                     <a href="#council">SAFE Council</a>
                     <a href="#forms">Join Us</a>
+                    <a href="#contact">Contact</a>
                 </div>
                 <div style="font-size:0.7rem;opacity:0.5;margin-top:4px;">
                     <i class="fas fa-shield-alt"></i> A Safe Community is a Safe Nation
@@ -1472,7 +1519,6 @@
             mobileOverlay.classList.remove('open');
             document.body.style.overflow = '';
             menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-            // Close mobile dropdown if open
             mobileDropdown.classList.remove('open');
             mobileArrow.textContent = '▼';
         }
@@ -1493,8 +1539,6 @@
         menuToggle.addEventListener('click', toggleMobileMenu);
         mobileOverlay.addEventListener('click', closeMobileMenu);
 
-        // Close mobile menu when a link is clicked (handled by onclick in HTML)
-
         // ============================================================
         // NAVIGATE TO LOCKED SECTION
         // ============================================================
@@ -1503,7 +1547,6 @@
             if (!section) return;
 
             section.style.display = 'block';
-            // Use setTimeout to allow the section to render before scrolling
             setTimeout(() => {
                 section.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, 100);
@@ -1754,6 +1797,29 @@
             responseDiv.innerHTML = '<i class="fas fa-check-circle"></i> Thank you! Your application has been received. We will contact you within 48 hours.';
             e.target.reset();
             setTimeout(() => { responseDiv.style.display = 'none'; }, 8000);
+        }
+
+        // ============================================================
+        // CONTACT FORM SUBMISSION
+        // ============================================================
+        function submitContactForm(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('contactName').value;
+            const email = document.getElementById('contactEmail').value;
+            const subject = document.getElementById('contactSubject').value;
+            const message = document.getElementById('contactMessage').value;
+
+            console.log('Contact Form Data:', { name, email, subject, message });
+
+            const responseDiv = document.getElementById('contactResponse');
+            responseDiv.style.display = 'block';
+            responseDiv.innerHTML = '<i class="fas fa-check-circle"></i> Thank you! Your message has been sent. We will respond shortly.';
+            e.target.reset();
+
+            setTimeout(() => {
+                responseDiv.style.display = 'none';
+            }, 8000);
         }
 
         // ============================================================
