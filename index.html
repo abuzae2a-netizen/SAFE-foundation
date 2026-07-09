@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SAFE Council | Sustainable Approach for Equity</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <title>SAFE Foundation | Sustainable Approach for Equity</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
@@ -42,12 +42,15 @@
             color: var(--text-dark);
             line-height: 1.6;
             scroll-behavior: smooth;
+            overflow-x: hidden;
+            width: 100%;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 16px;
+            width: 100%;
         }
 
         .text-center {
@@ -58,7 +61,7 @@
                    TYPOGRAPHY
                 ============================================================ */
         .section-title {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 800;
             letter-spacing: -0.02em;
             margin-bottom: 0.5rem;
@@ -68,10 +71,11 @@
             color: var(--secondary);
         }
         .section-subtitle {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--text-muted);
             max-width: 700px;
-            margin: 0 auto 2.5rem auto;
+            margin: 0 auto 2rem auto;
+            padding: 0 16px;
         }
 
         /* ============================================================
@@ -79,14 +83,15 @@
                 ============================================================ */
         .btn {
             display: inline-block;
-            padding: 12px 32px;
+            padding: 10px 24px;
             border-radius: 50px;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 0.95rem;
             border: none;
             cursor: pointer;
             transition: all var(--transition);
             text-decoration: none !important;
+            text-align: center;
         }
         .btn-primary {
             background: var(--primary);
@@ -131,8 +136,8 @@
             color: var(--white);
         }
         .btn-small {
-            padding: 8px 20px;
-            font-size: 0.85rem;
+            padding: 6px 16px;
+            font-size: 0.8rem;
         }
         .btn-white-outline {
             background: transparent;
@@ -165,15 +170,16 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
         .logo img {
-            height: 48px;
+            height: 40px;
             width: auto;
+            max-width: 100%;
         }
         .logo-text {
             font-weight: 800;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             color: var(--primary);
         }
         .logo-text span {
@@ -181,23 +187,24 @@
         }
         .logo-sub {
             display: block;
-            font-size: 0.6rem;
+            font-size: 0.5rem;
             font-weight: 400;
             color: var(--text-muted);
+            letter-spacing: 0.2px;
         }
 
         nav {
             display: flex;
-            gap: 20px;
+            gap: 12px;
             align-items: center;
             flex-wrap: wrap;
         }
         nav > a {
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-dark);
             text-decoration: none;
-            padding: 8px 0;
+            padding: 6px 0;
             cursor: pointer;
         }
         nav > a:hover {
@@ -211,10 +218,10 @@
         }
         .dropdown > a {
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-dark);
             text-decoration: none;
-            padding: 8px 0;
+            padding: 6px 0;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -229,7 +236,7 @@
             top: 100%;
             left: 0;
             background: var(--white);
-            min-width: 220px;
+            min-width: 200px;
             box-shadow: var(--shadow-lg);
             border-radius: 12px;
             padding: 8px 0;
@@ -241,7 +248,7 @@
             padding: 10px 20px;
             color: var(--text-dark);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
             transition: background 0.2s;
             cursor: pointer;
@@ -254,7 +261,7 @@
             display: block;
         }
         .dropdown .arrow {
-            font-size: 0.7rem;
+            font-size: 0.6rem;
             margin-left: 4px;
         }
 
@@ -265,6 +272,7 @@
             border: none;
             color: var(--primary);
             cursor: pointer;
+            padding: 4px 8px;
         }
 
         /* ============================================================
@@ -273,31 +281,31 @@
         .hero {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: var(--white);
-            padding: 80px 0 60px;
+            padding: 50px 0 40px;
             position: relative;
             overflow: hidden;
         }
         .hero::after {
             content: '';
             position: absolute;
-            right: -20%;
+            right: -30%;
             top: -20%;
             width: 60%;
             height: 120%;
-            background: rgba(0, 128, 128, 0.08);
+            background: rgba(0, 128, 128, 0.06);
             border-radius: 50%;
             pointer-events: none;
         }
         .hero .container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 48px;
+            gap: 32px;
             align-items: center;
             position: relative;
             z-index: 1;
         }
         .hero h1 {
-            font-size: 3rem;
+            font-size: 2.2rem;
             font-weight: 800;
             line-height: 1.2;
         }
@@ -305,67 +313,68 @@
             color: var(--gold);
         }
         .hero p {
-            font-size: 1.15rem;
+            font-size: 1rem;
             opacity: 0.9;
-            margin: 20px 0 32px;
+            margin: 16px 0 24px;
         }
         .hero .motto {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: var(--gold);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         .hero .badge {
             display: inline-block;
             background: rgba(255, 255, 255, 0.12);
-            padding: 4px 18px;
+            padding: 4px 16px;
             border-radius: 50px;
-            font-size: 0.8rem;
-            margin-bottom: 16px;
+            font-size: 0.75rem;
+            margin-bottom: 12px;
         }
 
         .hero-stats {
             display: flex;
-            gap: 32px;
-            margin-top: 32px;
+            gap: 20px;
+            margin-top: 24px;
             flex-wrap: wrap;
         }
         .hero-stats .stat .number {
-            font-size: 2rem;
+            font-size: 1.6rem;
             font-weight: 800;
             color: var(--gold);
         }
         .hero-stats .stat .label {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             opacity: 0.8;
         }
 
         .hero-card {
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 24px;
-            padding: 32px;
+            border-radius: 20px;
+            padding: 24px;
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(4px);
         }
         .hero-card i {
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: var(--gold);
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
         .hero-card h3 {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 800;
         }
         .hero-card p {
             opacity: 0.9;
+            font-size: 0.95rem;
         }
 
         /* ============================================================
                    SECTIONS
                 ============================================================ */
         section {
-            padding: 70px 0;
+            padding: 50px 0;
         }
         .bg-light {
             background: var(--light-bg);
@@ -386,16 +395,16 @@
                 ============================================================ */
         .mission-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 28px;
-            margin-top: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 24px;
         }
         .mission-card {
             background: var(--white);
-            padding: 28px 24px;
+            padding: 24px 20px;
             border-radius: var(--radius);
             box-shadow: var(--shadow);
-            border-left: 5px solid var(--secondary);
+            border-left: 4px solid var(--secondary);
             transition: transform 0.2s;
             text-align: left;
         }
@@ -403,18 +412,18 @@
             transform: translateY(-4px);
         }
         .mission-card .icon {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: var(--secondary);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
         .mission-card h3 {
             font-weight: 700;
-            margin-bottom: 8px;
-            font-size: 1.2rem;
+            margin-bottom: 6px;
+            font-size: 1.1rem;
         }
         .mission-card p {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         /* ============================================================
@@ -422,9 +431,9 @@
                 ============================================================ */
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 24px;
         }
         .project-card {
             background: var(--white);
@@ -434,28 +443,29 @@
             transition: transform 0.3s;
         }
         .project-card:hover {
-            transform: translateY(-6px);
+            transform: translateY(-4px);
         }
         .project-card .project-image {
             width: 100%;
-            height: 220px;
+            height: 160px;
             object-fit: cover;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: var(--white);
         }
         .project-card .content {
-            padding: 24px;
+            padding: 20px;
         }
         .project-card .content h3 {
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
+            font-size: 1.1rem;
         }
         .project-card .content p {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         /* ============================================================
@@ -465,22 +475,24 @@
             background: var(--light-bg);
             border: 2px dashed #d1d5db;
             border-radius: var(--radius);
-            padding: 40px;
+            padding: 30px 20px;
             text-align: center;
-            margin-top: 32px;
+            margin-top: 24px;
         }
         .locked-content .lock-icon {
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: var(--text-muted);
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
         .locked-content h3 {
-            margin-bottom: 8px;
+            margin-bottom: 6px;
+            font-size: 1.2rem;
         }
         .locked-content p {
             color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 20px;
+            max-width: 500px;
+            margin: 0 auto 16px;
+            font-size: 0.95rem;
         }
 
         /* ============================================================
@@ -490,34 +502,38 @@
             background: var(--white);
             border-radius: var(--radius);
             box-shadow: var(--shadow-lg);
-            padding: 40px;
-            margin-top: 32px;
-            max-height: 600px;
+            padding: 24px;
+            margin-top: 24px;
+            max-height: 500px;
             overflow-y: auto;
             border: 1px solid #e2e8f0;
         }
         .doc-preview .doc-header {
             border-bottom: 2px solid var(--secondary);
-            padding-bottom: 16px;
-            margin-bottom: 20px;
+            padding-bottom: 12px;
+            margin-bottom: 16px;
         }
         .doc-preview .doc-header h2 {
             color: var(--primary);
             font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
         }
         .doc-preview .doc-header .motto {
             color: var(--gold);
             font-style: italic;
+            font-size: 0.9rem;
         }
         .doc-preview .section {
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
         .doc-preview .section h3 {
             color: var(--primary);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
+            font-size: 1rem;
         }
         .doc-preview .section p {
             color: var(--text-dark);
+            font-size: 0.9rem;
         }
 
         /* ============================================================
@@ -527,11 +543,11 @@
             display: inline-block;
             background: #16a34a;
             color: var(--white);
-            padding: 4px 16px;
+            padding: 3px 14px;
             border-radius: 50px;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             font-weight: 600;
-            margin-left: 12px;
+            margin-left: 8px;
         }
 
         /* ============================================================
@@ -539,33 +555,34 @@
                 ============================================================ */
         .form-container {
             background: var(--white);
-            padding: 40px;
+            padding: 28px 20px;
             border-radius: var(--radius);
             box-shadow: var(--shadow-lg);
             max-width: 800px;
             margin: 0 auto;
         }
         .form-container h3 {
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             color: var(--primary);
+            font-size: 1.2rem;
         }
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
         .form-group label {
             display: block;
             font-weight: 600;
-            margin-bottom: 6px;
-            font-size: 0.9rem;
+            margin-bottom: 4px;
+            font-size: 0.85rem;
         }
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 12px 16px;
+            padding: 10px 14px;
             border: 1px solid #d1d5db;
             border-radius: var(--radius-sm);
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-family: inherit;
             transition: border 0.2s;
         }
@@ -577,63 +594,80 @@
             box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.1);
         }
         .form-group textarea {
-            min-height: 100px;
+            min-height: 80px;
             resize: vertical;
         }
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: 16px;
         }
 
         /* ============================================================
-                   MODAL
+                   ABOUT SECTION
                 ============================================================ */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 999;
-            justify-content: center;
-            align-items: center;
-            overflow-y: auto;
-            padding: 40px 20px;
+        .about-text {
+            background: var(--light-bg);
+            padding: 24px;
+            border-radius: var(--radius);
+            text-align: left;
+            margin-top: 20px;
         }
-        .modal.open {
-            display: flex;
-        }
-        .modal-content {
-            background: var(--white);
-            padding: 40px 32px;
-            border-radius: 24px;
-            max-width: 800px;
-            width: 100%;
-            position: relative;
-            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2);
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-        .modal-content .close {
-            position: sticky;
-            top: 0;
-            float: right;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-muted);
-            background: none;
-            border: none;
-            z-index: 10;
-        }
-        .modal-content .close:hover {
-            color: var(--text-dark);
-        }
-        .modal-content h2 {
-            margin-bottom: 16px;
+        .about-text h3 {
             color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        .about-text p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin-top: 8px;
+        }
+
+        /* ============================================================
+                   COUNCIL SECTION
+                ============================================================ */
+        .council-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: center;
+        }
+        .council-grid ul {
+            list-style: none;
+            margin: 16px 0 20px;
+        }
+        .council-grid ul li {
+            padding: 6px 0;
+            display: flex;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+        .council-grid ul li i {
+            color: var(--secondary);
+            width: 20px;
+            margin-top: 3px;
+        }
+        .council-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .council-stats .stat {
+            background: var(--light-bg);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .council-stats .stat .number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        .council-stats .stat .label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
         }
 
         /* ============================================================
@@ -642,7 +676,7 @@
         footer {
             background: #0f1e2e;
             color: #94a3b8;
-            padding: 28px 0;
+            padding: 24px 0;
             border-top: 1px solid #1e3a5f;
         }
         footer .container {
@@ -653,7 +687,7 @@
             gap: 12px;
         }
         footer .legal {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             opacity: 0.7;
         }
         footer a {
@@ -663,6 +697,24 @@
         footer a:hover {
             color: var(--white);
         }
+        .footer-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            font-size: 0.8rem;
+        }
+        .footer-contact {
+            font-size: 0.7rem;
+            margin-top: 4px;
+            color: #94a3b8;
+        }
+        .footer-contact a {
+            color: #94a3b8;
+        }
+        .footer-contact a:hover {
+            color: var(--white);
+        }
 
         /* ============================================================
                    RESPONSIVE
@@ -670,19 +722,31 @@
         @media (max-width: 992px) {
             .hero .container {
                 grid-template-columns: 1fr;
+                gap: 24px;
             }
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 1.8rem;
+            }
+            .council-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .council-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+            .section-title {
+                font-size: 1.6rem;
             }
         }
 
         @media (max-width: 768px) {
+            /* Mobile Navigation */
             nav {
                 display: none;
                 flex-direction: column;
                 width: 100%;
-                padding: 16px 0;
-                gap: 12px;
+                padding: 12px 0;
+                gap: 8px;
             }
             nav.open {
                 display: flex;
@@ -697,22 +761,163 @@
                 position: static;
                 box-shadow: none;
                 border: none;
-                padding-left: 20px;
+                padding-left: 16px;
+                background: var(--light-bg);
+                border-radius: 8px;
+                margin-top: 4px;
             }
-            .section-title {
-                font-size: 1.8rem;
+            .dropdown:hover .dropdown-content {
+                display: none;
             }
-            .form-row {
-                grid-template-columns: 1fr;
+            .dropdown.open .dropdown-content {
+                display: block;
             }
-            .form-container {
-                padding: 24px;
+
+            /* Hero */
+            .hero {
+                padding: 40px 0 30px;
             }
-            .doc-preview {
-                padding: 20px;
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+            .hero p {
+                font-size: 0.9rem;
             }
             .hero-stats {
+                gap: 12px;
+            }
+            .hero-stats .stat .number {
+                font-size: 1.3rem;
+            }
+            .hero-card {
+                padding: 20px;
+            }
+            .hero-card h3 {
+                font-size: 1.3rem;
+            }
+
+            /* Sections */
+            section {
+                padding: 40px 0;
+            }
+            .section-title {
+                font-size: 1.4rem;
+            }
+            .section-subtitle {
+                font-size: 0.9rem;
+                padding: 0 8px;
+            }
+
+            /* Cards */
+            .mission-grid {
+                grid-template-columns: 1fr;
                 gap: 16px;
+            }
+            .project-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+            .project-card .project-image {
+                height: 120px;
+                font-size: 2rem;
+            }
+
+            /* Council */
+            .council-stats {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .council-stats .stat {
+                padding: 16px;
+            }
+            .council-stats .stat .number {
+                font-size: 1.5rem;
+            }
+
+            /* Forms */
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            .form-container {
+                padding: 20px 16px;
+            }
+
+            /* Locked Content */
+            .locked-content {
+                padding: 24px 16px;
+            }
+            .doc-preview {
+                padding: 16px;
+                max-height: 400px;
+            }
+
+            /* About */
+            .about-text {
+                padding: 18px 16px;
+            }
+            .about-text p {
+                font-size: 0.9rem;
+            }
+
+            /* Buttons */
+            .btn {
+                padding: 8px 18px;
+                font-size: 0.85rem;
+            }
+
+            /* Footer */
+            footer .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 12px;
+            }
+
+            .hero h1 {
+                font-size: 1.3rem;
+            }
+            .hero .motto {
+                font-size: 0.95rem;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .council-stats {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+            .council-stats .stat {
+                padding: 12px;
+            }
+            .council-stats .stat .number {
+                font-size: 1.3rem;
+            }
+
+            .hero-stats {
+                gap: 10px;
+            }
+            .hero-stats .stat .number {
+                font-size: 1.1rem;
+            }
+
+            .logo-text {
+                font-size: 0.95rem;
+            }
+            .logo img {
+                height: 32px;
+            }
+            .logo-sub {
+                font-size: 0.45rem;
             }
         }
 
@@ -745,18 +950,18 @@
     <header>
         <div class="container">
             <div class="logo">
-                <img src="images/logo.png" alt="SAFE Council Logo" onerror="this.style.display='none'; this.outerHTML='<span style=\'background:#1a365d;color:#fff;padding:8px 14px;border-radius:12px;font-weight:800;\'>SAFE</span>';" />
+                <img src="images/logo.png" alt="SAFE Foundation Logo" onerror="this.style.display='none'; this.outerHTML='<span style=\'background:#1a365d;color:#fff;padding:6px 10px;border-radius:8px;font-weight:800;font-size:0.8rem;\'>SAFE</span>';" />
                 <div>
-                    <span class="logo-text">SAFE <span>Council</span></span>
+                    <span class="logo-text">SAFE <span>Foundation</span></span>
                     <span class="logo-sub">Sustainable Approach for Equity</span>
                 </div>
             </div>
-            <button class="hamburger" id="menuToggle"><i class="fas fa-bars"></i></button>
+            <button class="hamburger" id="menuToggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
             <nav id="mainNav">
                 <a href="#about">About</a>
                 <a href="#projects">Projects</a>
-                <div class="dropdown">
-                    <a href="javascript:void(0)">SAFE Council <span class="arrow">▼</span></a>
+                <div class="dropdown" id="dropdownNav">
+                    <a href="javascript:void(0)" onclick="toggleDropdown()">SAFE Council <span class="arrow">▼</span></a>
                     <div class="dropdown-content">
                         <a href="#council">Overview</a>
                         <a href="#manifesto" onclick="navigateToLockedSection('manifesto')">Manifesto</a>
@@ -780,14 +985,14 @@
                 <p class="motto">"A Safe Community is a Safe Nation"</p>
                 <h1>Help Us Create A Peaceful And <span>Inequality-Free</span> Society</h1>
                 <p>SAFE Foundation is committed to building safe communities through our core missions: <strong>Community Development</strong> and <strong>Good Governance</strong>.</p>
-                <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:24px;">
+                <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px;">
                     <a href="#forms" class="btn btn-accent"><i class="fas fa-hand-heart"></i> Join as Volunteer</a>
                     <a href="https://safefoundationafrica.org/product/general-single-donation/" target="_blank" class="btn btn-white-outline">Make a Donation</a>
                 </div>
                 <div class="hero-stats">
                     <div class="stat"><span class="number">5+</span><div class="label">Years Serving</div></div>
                     <div class="stat"><span class="number">12</span><div class="label">Northern States</div></div>
-                    <div class="stat"><span class="number">53,487</span><div class="label">Members</div></div>
+                    <div class="stat"><span class="number">3</span><div class="label">Sister Orgs</div></div>
                     <div class="stat"><span class="number">2024</span><div class="label">SAFE Council Est.</div></div>
                 </div>
             </div>
@@ -795,8 +1000,8 @@
                 <i class="fas fa-check-circle"></i>
                 <h3>SAFE Council</h3>
                 <p>Governance & Civic Engagement Arm</p>
-                <p style="font-size:0.9rem;opacity:0.7;margin-top:8px;">Delegates from all parties · INEC accreditation pending</p>
-                <a href="#council" class="btn btn-accent" style="margin-top:16px;">Learn More</a>
+                <p style="font-size:0.8rem;opacity:0.7;margin-top:6px;">Delegates from all parties · INEC accreditation pending</p>
+                <a href="#council" class="btn btn-accent" style="margin-top:12px;">Learn More</a>
             </div>
         </div>
     </section>
@@ -809,20 +1014,14 @@
             <h2 class="section-title">About <span>Us</span></h2>
             <p class="section-subtitle">SAFE Foundation is a non-profit, grassroots organization dedicated to creating opportunities, restoring hope, and building stronger communities across Northern Nigeria.</p>
 
-            <div style="background:var(--light-bg);padding:32px;border-radius:var(--radius);text-align:left;margin-top:24px;">
-                <h3 style="color:var(--primary);margin-bottom:12px;">SAFE Council: Our Governance & Civic Engagement Arm</h3>
-                <p style="font-size:1.05rem;line-height:1.8;color:var(--text-dark);">
-                    SAFE Council is a citizen-led initiative, operating under the SAFE Foundation umbrella, that brings together Nigerians from all walks of life – political parties, universities, businesses, and communities – to support our government in delivering better results for our people.
-                </p>
-                <p style="font-size:1.05rem;line-height:1.8;color:var(--text-dark);margin-top:12px;">
-                    We believe that when citizens and government work together, we build stronger communities and a more prosperous nation. Our role is to provide constructive, evidence-based feedback that helps public officials identify what's working, address challenges, and continuously improve service delivery.
-                </p>
-                <p style="font-size:1.05rem;line-height:1.8;color:var(--text-dark);margin-top:12px;font-weight:600;color:var(--primary);">
-                    We are not an opposition group. We are <strong>partners in national development</strong> – committed to ensuring that public resources are managed effectively, policies are implemented efficiently, and every Nigerian feels the impact of good governance in their daily lives.
-                </p>
+            <div class="about-text">
+                <h3>SAFE Council: Our Governance & Civic Engagement Arm</h3>
+                <p>SAFE Council is a citizen-led initiative, operating under the SAFE Foundation umbrella, that brings together Nigerians from all walks of life – political parties, universities, businesses, and communities – to support our government in delivering better results for our people.</p>
+                <p>We believe that when citizens and government work together, we build stronger communities and a more prosperous nation. Our role is to provide constructive, evidence-based feedback that helps public officials identify what's working, address challenges, and continuously improve service delivery.</p>
+                <p style="font-weight:600;color:var(--primary);">We are not an opposition group. We are <strong>partners in national development</strong> – committed to ensuring that public resources are managed effectively, policies are implemented efficiently, and every Nigerian feels the impact of good governance in their daily lives.</p>
             </div>
 
-            <h3 style="margin-top:40px;color:var(--primary);">Our Mission Areas</h3>
+            <h3 style="margin-top:30px;color:var(--primary);font-size:1.2rem;">Our Mission Areas</h3>
             <div class="mission-grid">
                 <div class="mission-card">
                     <div class="icon"><i class="fas fa-people-arrows"></i></div>
@@ -891,36 +1090,36 @@
     ============================================================ -->
     <section id="council">
         <div class="container">
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;">
+            <div class="council-grid">
                 <div>
-                    <span style="background:#00808020;padding:4px 16px;border-radius:50px;font-weight:700;font-size:0.8rem;color:var(--secondary);">EST. 2024</span>
-                    <h2 style="font-size:2.5rem;font-weight:800;margin:12px 0 8px;">SAFE <span style="color:var(--secondary);">Council</span></h2>
-                    <p style="font-size:1.1rem;color:var(--text-muted);">Our governance and civic engagement arm — uniting delegates from all political parties, universities, and economic sectors.</p>
-                    <ul style="list-style:none;margin:20px 0 28px;">
-                        <li style="padding:8px 0;display:flex;gap:12px;"><i style="color:var(--secondary);width:24px;" class="fas fa-check-circle"></i> Provide constructive feedback to government</li>
-                        <li style="padding:8px 0;display:flex;gap:12px;"><i style="color:var(--secondary);width:24px;" class="fas fa-check-circle"></i> Cross-party oversight — no bias, no partisanship</li>
-                        <li style="padding:8px 0;display:flex;gap:12px;"><i style="color:var(--secondary);width:24px;" class="fas fa-check-circle"></i> Deploy trained election observers (INEC accredited)</li>
-                        <li style="padding:8px 0;display:flex;gap:12px;"><i style="color:var(--secondary);width:24px;" class="fas fa-check-circle"></i> House-to-house civic education and voter mobilisation</li>
-                        <li style="padding:8px 0;display:flex;gap:12px;"><i style="color:var(--secondary);width:24px;" class="fas fa-check-circle"></i> Public scorecards and FOI advocacy for accountability</li>
+                    <span style="background:#00808020;padding:3px 14px;border-radius:50px;font-weight:700;font-size:0.7rem;color:var(--secondary);">EST. 2024</span>
+                    <h2 style="font-size:2rem;font-weight:800;margin:10px 0 6px;">SAFE <span style="color:var(--secondary);">Council</span></h2>
+                    <p style="font-size:1rem;color:var(--text-muted);">Our governance and civic engagement arm — uniting delegates from all political parties, universities, and economic sectors.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Provide constructive feedback to government</li>
+                        <li><i class="fas fa-check-circle"></i> Cross-party oversight — no bias, no partisanship</li>
+                        <li><i class="fas fa-check-circle"></i> Deploy trained election observers (INEC accredited)</li>
+                        <li><i class="fas fa-check-circle"></i> House-to-house civic education and voter mobilisation</li>
+                        <li><i class="fas fa-check-circle"></i> Public scorecards and FOI advocacy for accountability</li>
                     </ul>
                     <a href="#forms" class="btn btn-primary"><i class="fas fa-user-plus"></i> Join SAFE Council as Delegate</a>
                 </div>
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
-                    <div style="background:var(--light-bg);padding:24px;border-radius:12px;text-align:center;">
-                        <div style="font-size:2.2rem;font-weight:800;color:var(--primary);">58</div>
-                        <div style="font-size:0.9rem;color:var(--text-muted);">National Delegates</div>
+                <div class="council-stats">
+                    <div class="stat">
+                        <div class="number">58</div>
+                        <div class="label">National Delegates</div>
                     </div>
-                    <div style="background:var(--light-bg);padding:24px;border-radius:12px;text-align:center;">
-                        <div style="font-size:2.2rem;font-weight:800;color:var(--primary);">12</div>
-                        <div style="font-size:0.9rem;color:var(--text-muted);">Northern States</div>
+                    <div class="stat">
+                        <div class="number">12</div>
+                        <div class="label">Northern States</div>
                     </div>
-                    <div style="background:var(--light-bg);padding:24px;border-radius:12px;text-align:center;">
-                        <div style="font-size:2.2rem;font-weight:800;color:var(--primary);">53,487</div>
-                        <div style="font-size:0.9rem;color:var(--text-muted);">Members</div>
+                    <div class="stat">
+                        <div class="number">3</div>
+                        <div class="label">Sister Orgs</div>
                     </div>
-                    <div style="background:var(--light-bg);padding:24px;border-radius:12px;text-align:center;">
-                        <div style="font-size:2.2rem;font-weight:800;color:var(--primary);">2027</div>
-                        <div style="font-size:0.9rem;color:var(--text-muted);">Election Observation Target</div>
+                    <div class="stat">
+                        <div class="number">2027</div>
+                        <div class="label">Election Target</div>
                     </div>
                 </div>
             </div>
@@ -956,11 +1155,11 @@
             <p class="section-subtitle">Downloadable resources for volunteers, delegates, and couples.</p>
 
             <!-- Document Description -->
-            <div style="background:var(--white);padding:24px;border-radius:var(--radius);box-shadow:var(--shadow);text-align:left;margin-top:24px;">
-                <p style="font-size:1rem;color:var(--text-dark);line-height:1.8;">
+            <div style="background:var(--white);padding:20px;border-radius:var(--radius);box-shadow:var(--shadow);text-align:left;margin-top:20px;">
+                <p style="font-size:0.95rem;color:var(--text-dark);line-height:1.8;">
                     <strong>SAFE Council has developed a comprehensive library of resources</strong> to support community development and good governance. These include:
                 </p>
-                <ul style="margin:16px 0 0 20px;line-height:2;color:var(--text-dark);">
+                <ul style="margin:12px 0 0 18px;line-height:2;color:var(--text-dark);font-size:0.9rem;">
                     <li><strong>Full SAFE Council Manifesto</strong> – Outlining our principles, mandate, and commitment to collaborative governance.</li>
                     <li><strong>Code of Conduct</strong> – Ethical guidelines for all delegates, volunteers, and staff.</li>
                     <li><strong>Marriage Counselling Handbook</strong> – A complete guide for couples participating in our pre-marital and post-marital programs.</li>
@@ -969,11 +1168,11 @@
                     <li><strong>Full Marriage Counselling Curriculum</strong> – Week-by-week lesson plans for pre-marital and post-marital sessions.</li>
                     <li><strong>Examination Papers</strong> – Sample questions and answer keys for marriage counselling assessments.</li>
                 </ul>
-                <p style="margin-top:16px;font-size:1rem;color:var(--text-dark);line-height:1.8;">
-                    <strong>These documents are available exclusively to our donors.</strong> Your donation supports our mission of building stronger families, communities, and a more accountable Nigeria. By contributing, you gain access to these valuable resources and become a partner in national development.
+                <p style="margin-top:12px;font-size:0.95rem;color:var(--text-dark);line-height:1.8;">
+                    <strong>These documents are available exclusively to our donors.</strong> Your donation supports our mission of building stronger families, communities, and a more accountable Nigeria.
                 </p>
-                <div style="text-align:center;margin-top:20px;">
-                    <a href="https://safefoundationafrica.org/product/general-single-donation/" target="_blank" class="btn btn-gold"><i class="fas fa-heart"></i> Donate to Unlock All Documents</a>
+                <div style="text-align:center;margin-top:16px;">
+                    <a href="https://safefoundationafrica.org/product/general-single-donation/" target="_blank" class="btn btn-gold"><i class="fas fa-heart"></i> Donate to Unlock All</a>
                 </div>
             </div>
 
@@ -999,9 +1198,9 @@
             </div>
 
             <!-- Delegate Registration -->
-            <div class="form-container" style="margin-bottom:40px;">
-                <h3><i class="fas fa-user-tie" style="color:var(--secondary);margin-right:8px;"></i> Delegate Registration – SAFE Council</h3>
-                <p style="color:var(--text-muted);margin-bottom:20px;">For representatives from political parties, tertiary institutions, and formal/informal sectors.</p>
+            <div class="form-container" style="margin-bottom:32px;">
+                <h3><i class="fas fa-user-tie" style="color:var(--secondary);margin-right:6px;"></i> Delegate Registration – SAFE Council</h3>
+                <p style="color:var(--text-muted);margin-bottom:16px;font-size:0.9rem;">For representatives from political parties, tertiary institutions, and formal/informal sectors.</p>
                 <form id="delegateForm" onsubmit="submitForm(event, 'delegate')">
                     <div class="form-row">
                         <div class="form-group"><label>Full Name *</label><input type="text" id="delName" required /></div>
@@ -1022,15 +1221,15 @@
                     </div>
                     <div class="form-group"><label>Organization/Party Name *</label><input type="text" id="delOrg" required /></div>
                     <div class="form-group"><label>Why do you want to be a delegate? *</label><textarea id="delReason" required></textarea></div>
-                    <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit Delegate Application</button>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit</button>
                 </form>
-                <div id="delegateResponse" style="margin-top:16px;display:none;padding:16px;border-radius:8px;background:#dcfce7;color:#166534;"></div>
+                <div id="delegateResponse" style="margin-top:12px;display:none;padding:12px;border-radius:8px;background:#dcfce7;color:#166534;"></div>
             </div>
 
             <!-- Volunteer Registration -->
-            <div class="form-container" style="margin-bottom:40px;">
-                <h3><i class="fas fa-hands-helping" style="color:var(--secondary);margin-right:8px;"></i> Volunteer Registration</h3>
-                <p style="color:var(--text-muted);margin-bottom:20px;">Join as a Marriage Counsellor, Family Ambassador, Street Captain, Election Observer, or Youth Mobilizer.</p>
+            <div class="form-container" style="margin-bottom:32px;">
+                <h3><i class="fas fa-hands-helping" style="color:var(--secondary);margin-right:6px;"></i> Volunteer Registration</h3>
+                <p style="color:var(--text-muted);margin-bottom:16px;font-size:0.9rem;">Join as a Marriage Counsellor, Family Ambassador, Street Captain, Election Observer, or Youth Mobilizer.</p>
                 <form id="volunteerForm" onsubmit="submitForm(event, 'volunteer')">
                     <div class="form-row">
                         <div class="form-group"><label>Full Name *</label><input type="text" id="volName" required /></div>
@@ -1051,15 +1250,15 @@
                         </div>
                     </div>
                     <div class="form-group"><label>Why do you want to volunteer? *</label><textarea id="volReason" required></textarea></div>
-                    <button type="submit" class="btn btn-secondary"><i class="fas fa-paper-plane"></i> Submit Volunteer Application</button>
+                    <button type="submit" class="btn btn-secondary"><i class="fas fa-paper-plane"></i> Submit</button>
                 </form>
-                <div id="volunteerResponse" style="margin-top:16px;display:none;padding:16px;border-radius:8px;background:#dcfce7;color:#166534;"></div>
+                <div id="volunteerResponse" style="margin-top:12px;display:none;padding:12px;border-radius:8px;background:#dcfce7;color:#166534;"></div>
             </div>
 
             <!-- Marriage Counselling Enrollment -->
             <div class="form-container">
-                <h3><i class="fas fa-ring" style="color:var(--secondary);margin-right:8px;"></i> Marriage Counselling Enrollment</h3>
-                <p style="color:var(--text-muted);margin-bottom:20px;">Free 12-week pre-marital or post-marital counselling with certification.</p>
+                <h3><i class="fas fa-ring" style="color:var(--secondary);margin-right:6px;"></i> Marriage Counselling Enrollment</h3>
+                <p style="color:var(--text-muted);margin-bottom:16px;font-size:0.9rem;">Free 12-week pre-marital or post-marital counselling with certification.</p>
                 <form id="marriageForm" onsubmit="submitForm(event, 'marriage')">
                     <div class="form-row">
                         <div class="form-group"><label>Partner 1 Name *</label><input type="text" id="marrName1" required /></div>
@@ -1081,7 +1280,7 @@
                     </div>
                     <button type="submit" class="btn btn-accent"><i class="fas fa-paper-plane"></i> Enrol Now</button>
                 </form>
-                <div id="marriageResponse" style="margin-top:16px;display:none;padding:16px;border-radius:8px;background:#dcfce7;color:#166534;"></div>
+                <div id="marriageResponse" style="margin-top:12px;display:none;padding:12px;border-radius:8px;background:#dcfce7;color:#166534;"></div>
             </div>
         </div>
     </section>
@@ -1092,24 +1291,25 @@
     <footer id="contact">
         <div class="container">
             <div>
-                <strong style="color:var(--white);">SAFE Foundation</strong> — Sustainable Approach for Equity
+                <strong style="color:var(--white);font-size:0.95rem;">SAFE Foundation</strong>
+                <div style="font-size:0.75rem;color:#94a3b8;">Sustainable Approach for Equity</div>
                 <div class="legal">© 2026 · All rights reserved. Nigeria.</div>
             </div>
             <div style="text-align:right;">
-                <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:flex-end;">
+                <div class="footer-links">
                     <a href="#about">About</a>
                     <a href="#projects">Projects</a>
                     <a href="#council">SAFE Council</a>
                     <a href="#forms">Join Us</a>
                 </div>
-                <div style="font-size:0.75rem;opacity:0.5;margin-top:4px;">
+                <div style="font-size:0.7rem;opacity:0.5;margin-top:4px;">
                     <i class="fas fa-shield-alt"></i> A Safe Community is a Safe Nation
                 </div>
-                <div style="font-size:0.75rem;margin-top:8px;color:#94a3b8;">
-                    Head Office: 666 Hausawa Bawo Road, Tarauni, Kano · Branch: Maiduguri, Borno
+                <div class="footer-contact">
+                    Head Office: 666 Hausawa Bawo Road, Tarauni, Kano
                 </div>
-                <div style="font-size:0.75rem;margin-top:4px;color:#94a3b8;">
-                    📞 08127337603 · 📧 <a href="mailto:safefoundation@gmail.com" style="color:#94a3b8;">safefoundation@gmail.com</a>
+                <div class="footer-contact">
+                    📞 08127337603 · 📧 <a href="mailto:safefoundation@gmail.com">safefoundation@gmail.com</a>
                 </div>
             </div>
         </div>
@@ -1120,23 +1320,6 @@
     ============================================================ -->
     <script>
         // ============================================================
-        // MODAL
-        // ============================================================
-        function openModal(id) {
-            document.getElementById(id).classList.add('open');
-        }
-
-        function closeModal(id) {
-            document.getElementById(id).classList.remove('open');
-        }
-
-        window.onclick = function(e) {
-            if (e.target.classList.contains('modal')) {
-                e.target.classList.remove('open');
-            }
-        }
-
-        // ============================================================
         // HAMBURGER
         // ============================================================
         document.getElementById('menuToggle').addEventListener('click', function() {
@@ -1144,8 +1327,19 @@
         });
 
         document.querySelectorAll('#mainNav a').forEach(link => {
-            link.addEventListener('click', () => document.getElementById('mainNav').classList.remove('open'));
+            link.addEventListener('click', () => {
+                document.getElementById('mainNav').classList.remove('open');
+                // Close dropdown on mobile
+                document.getElementById('dropdownNav').classList.remove('open');
+            });
         });
+
+        // ============================================================
+        // DROPDOWN TOGGLE (Mobile)
+        // ============================================================
+        function toggleDropdown() {
+            document.getElementById('dropdownNav').classList.toggle('open');
+        }
 
         // ============================================================
         // NAVIGATE TO LOCKED SECTION
@@ -1156,6 +1350,10 @@
 
             section.style.display = 'block';
             section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // Close mobile menu
+            document.getElementById('mainNav').classList.remove('open');
+            document.getElementById('dropdownNav').classList.remove('open');
 
             if (!donationMade) {
                 const lockContent = section.querySelector('.locked-content');
@@ -1250,41 +1448,41 @@
             } else if (contentId === 'documentsContent') {
                 return `
                         <div>
-                            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;">
-                                <div style="background:var(--white);padding:24px;border-radius:16px;box-shadow:var(--shadow);text-align:center;">
-                                    <i class="fas fa-file-alt" style="font-size:2.5rem;color:var(--secondary);"></i>
-                                    <h4 style="margin:8px 0;">Manifesto</h4>
-                                    <a href="#" onclick="downloadManifestoPDF(); return false;" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> Download PDF</a>
+                            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
+                                <div style="background:var(--white);padding:20px;border-radius:12px;box-shadow:var(--shadow);text-align:center;">
+                                    <i class="fas fa-file-alt" style="font-size:2rem;color:var(--secondary);"></i>
+                                    <h4 style="margin:6px 0;font-size:0.95rem;">Manifesto</h4>
+                                    <a href="#" onclick="downloadManifestoPDF(); return false;" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> Download</a>
                                 </div>
-                                <div style="background:var(--white);padding:24px;border-radius:16px;box-shadow:var(--shadow);text-align:center;">
-                                    <i class="fas fa-gavel" style="font-size:2.5rem;color:var(--secondary);"></i>
-                                    <h4 style="margin:8px 0;">Code of Conduct</h4>
-                                    <a href="#" onclick="downloadCodeOfConductPDF(); return false;" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> Download PDF</a>
+                                <div style="background:var(--white);padding:20px;border-radius:12px;box-shadow:var(--shadow);text-align:center;">
+                                    <i class="fas fa-gavel" style="font-size:2rem;color:var(--secondary);"></i>
+                                    <h4 style="margin:6px 0;font-size:0.95rem;">Code of Conduct</h4>
+                                    <a href="#" onclick="downloadCodeOfConductPDF(); return false;" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> Download</a>
                                 </div>
-                                <div style="background:var(--white);padding:24px;border-radius:16px;box-shadow:var(--shadow);text-align:center;">
-                                    <i class="fas fa-ring" style="font-size:2.5rem;color:var(--secondary);"></i>
-                                    <h4 style="margin:8px 0;">Marriage Handbook</h4>
-                                    <a href="#" onclick="downloadMarriageHandbookPDF(); return false;" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> Download PDF</a>
+                                <div style="background:var(--white);padding:20px;border-radius:12px;box-shadow:var(--shadow);text-align:center;">
+                                    <i class="fas fa-ring" style="font-size:2rem;color:var(--secondary);"></i>
+                                    <h4 style="margin:6px 0;font-size:0.95rem;">Marriage Handbook</h4>
+                                    <a href="#" onclick="downloadMarriageHandbookPDF(); return false;" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> Download</a>
                                 </div>
-                                <div style="background:var(--white);padding:24px;border-radius:16px;box-shadow:var(--shadow);text-align:center;">
-                                    <i class="fas fa-chalkboard-teacher" style="font-size:2.5rem;color:var(--secondary);"></i>
-                                    <h4 style="margin:8px 0;">Volunteer Training Manual</h4>
-                                    <a href="#" onclick="downloadTrainingManualPDF(); return false;" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> Download PDF</a>
+                                <div style="background:var(--white);padding:20px;border-radius:12px;box-shadow:var(--shadow);text-align:center;">
+                                    <i class="fas fa-chalkboard-teacher" style="font-size:2rem;color:var(--secondary);"></i>
+                                    <h4 style="margin:6px 0;font-size:0.95rem;">Training Manual</h4>
+                                    <a href="#" onclick="downloadTrainingManualPDF(); return false;" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> Download</a>
                                 </div>
-                                <div style="background:var(--white);padding:24px;border-radius:16px;box-shadow:var(--shadow);text-align:center;">
-                                    <i class="fas fa-certificate" style="font-size:2.5rem;color:var(--secondary);"></i>
-                                    <h4 style="margin:8px 0;">Marriage Certificate</h4>
-                                    <a href="#" onclick="downloadCertificatePDF(); return false;" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> Download PDF</a>
+                                <div style="background:var(--white);padding:20px;border-radius:12px;box-shadow:var(--shadow);text-align:center;">
+                                    <i class="fas fa-certificate" style="font-size:2rem;color:var(--secondary);"></i>
+                                    <h4 style="margin:6px 0;font-size:0.95rem;">Marriage Certificate</h4>
+                                    <a href="#" onclick="downloadCertificatePDF(); return false;" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> Download</a>
                                 </div>
-                                <div style="background:var(--white);padding:24px;border-radius:16px;box-shadow:var(--shadow);text-align:center;">
-                                    <i class="fas fa-file-pdf" style="font-size:2.5rem;color:var(--secondary);"></i>
-                                    <h4 style="margin:8px 0;">Full Curriculum</h4>
-                                    <a href="#" onclick="downloadCurriculumPDF(); return false;" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> Download PDF</a>
+                                <div style="background:var(--white);padding:20px;border-radius:12px;box-shadow:var(--shadow);text-align:center;">
+                                    <i class="fas fa-file-pdf" style="font-size:2rem;color:var(--secondary);"></i>
+                                    <h4 style="margin:6px 0;font-size:0.95rem;">Full Curriculum</h4>
+                                    <a href="#" onclick="downloadCurriculumPDF(); return false;" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> Download</a>
                                 </div>
-                                <div style="background:var(--white);padding:24px;border-radius:16px;box-shadow:var(--shadow);text-align:center;">
-                                    <i class="fas fa-file-pdf" style="font-size:2.5rem;color:var(--secondary);"></i>
-                                    <h4 style="margin:8px 0;">Examination Papers</h4>
-                                    <a href="#" onclick="downloadExamsPDF(); return false;" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> Download PDF</a>
+                                <div style="background:var(--white);padding:20px;border-radius:12px;box-shadow:var(--shadow);text-align:center;">
+                                    <i class="fas fa-file-pdf" style="font-size:2rem;color:var(--secondary);"></i>
+                                    <h4 style="margin:6px 0;font-size:0.95rem;">Examination Papers</h4>
+                                    <a href="#" onclick="downloadExamsPDF(); return false;" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> Download</a>
                                 </div>
                             </div>
                         </div>
