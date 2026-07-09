@@ -28,6 +28,7 @@
             --radius: 16px;
             --radius-sm: 8px;
             --transition: 0.3s ease;
+            --header-height: 64px;
         }
 
         * {
@@ -36,12 +37,15 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-padding-top: var(--header-height);
+        }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--white);
             color: var(--text-dark);
             line-height: 1.6;
-            scroll-behavior: smooth;
             overflow-x: hidden;
             width: 100%;
         }
@@ -159,18 +163,23 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
         }
         header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
+            width: 100%;
         }
 
         .logo {
             display: flex;
             align-items: center;
             gap: 10px;
+            flex-shrink: 0;
         }
         .logo img {
             height: 40px;
@@ -193,11 +202,12 @@
             letter-spacing: 0.2px;
         }
 
+        /* ---- Desktop Navigation ---- */
         nav {
             display: flex;
-            gap: 12px;
+            gap: 16px;
             align-items: center;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
         }
         nav > a {
             font-weight: 600;
@@ -206,12 +216,13 @@
             text-decoration: none;
             padding: 6px 0;
             cursor: pointer;
+            white-space: nowrap;
         }
         nav > a:hover {
             color: var(--primary);
         }
 
-        /* ---- Dropdown ---- */
+        /* ---- Dropdown (Desktop) ---- */
         .dropdown {
             position: relative;
             display: inline-block;
@@ -226,6 +237,7 @@
             display: flex;
             align-items: center;
             gap: 4px;
+            white-space: nowrap;
         }
         .dropdown > a:hover {
             color: var(--primary);
@@ -265,6 +277,7 @@
             margin-left: 4px;
         }
 
+        /* ---- Mobile Navigation (Hamburger) ---- */
         .hamburger {
             display: none;
             font-size: 1.5rem;
@@ -273,6 +286,101 @@
             color: var(--primary);
             cursor: pointer;
             padding: 4px 8px;
+            flex-shrink: 0;
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: var(--header-height);
+            left: 0;
+            width: 100%;
+            height: calc(100vh - var(--header-height));
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 99;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .mobile-menu-overlay.open {
+            display: block;
+            opacity: 1;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: var(--header-height);
+            left: 0;
+            width: 100%;
+            max-height: calc(100vh - var(--header-height));
+            background: var(--white);
+            padding: 16px 20px 30px;
+            z-index: 100;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            overflow-y: auto;
+            transform: translateY(-10px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .mobile-nav.open {
+            display: block;
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .mobile-nav a {
+            display: block;
+            padding: 12px 0;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .mobile-nav a:last-child {
+            border-bottom: none;
+        }
+        .mobile-nav a:hover {
+            color: var(--primary);
+        }
+        .mobile-nav .dropdown-mobile {
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .mobile-nav .dropdown-mobile > a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: none;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .mobile-nav .dropdown-mobile-content {
+            display: none;
+            padding-left: 16px;
+            background: var(--light-bg);
+            border-radius: 8px;
+            margin-bottom: 4px;
+        }
+        .mobile-nav .dropdown-mobile-content a {
+            padding: 10px 16px;
+            border-bottom: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        .mobile-nav .dropdown-mobile-content a:last-child {
+            border-bottom: none;
+        }
+        .mobile-nav .dropdown-mobile.open .dropdown-mobile-content {
+            display: block;
+        }
+        .mobile-nav .btn {
+            margin-top: 12px;
+            width: 100%;
+            text-align: center;
         }
 
         /* ============================================================
@@ -375,6 +483,7 @@
                 ============================================================ */
         section {
             padding: 50px 0;
+            scroll-margin-top: var(--header-height);
         }
         .bg-light {
             background: var(--light-bg);
@@ -740,40 +849,32 @@
         }
 
         @media (max-width: 768px) {
-            /* Mobile Navigation */
-            nav {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                padding: 12px 0;
-                gap: 8px;
+            :root {
+                --header-height: 58px;
             }
-            nav.open {
-                display: flex;
+
+            /* ---- Hide desktop nav ---- */
+            nav.desktop-nav {
+                display: none !important;
             }
+
+            /* ---- Show hamburger ---- */
             .hamburger {
                 display: block;
             }
-            .dropdown {
-                width: 100%;
-            }
-            .dropdown-content {
-                position: static;
-                box-shadow: none;
-                border: none;
-                padding-left: 16px;
-                background: var(--light-bg);
-                border-radius: 8px;
-                margin-top: 4px;
-            }
-            .dropdown:hover .dropdown-content {
-                display: none;
-            }
-            .dropdown.open .dropdown-content {
+
+            /* ---- Show mobile nav when open ---- */
+            .mobile-nav.open {
                 display: block;
+                transform: translateY(0);
+                opacity: 1;
+            }
+            .mobile-menu-overlay.open {
+                display: block;
+                opacity: 1;
             }
 
-            /* Hero */
+            /* ---- Hero ---- */
             .hero {
                 padding: 40px 0 30px;
             }
@@ -796,7 +897,7 @@
                 font-size: 1.3rem;
             }
 
-            /* Sections */
+            /* ---- Sections ---- */
             section {
                 padding: 40px 0;
             }
@@ -808,7 +909,7 @@
                 padding: 0 8px;
             }
 
-            /* Cards */
+            /* ---- Cards ---- */
             .mission-grid {
                 grid-template-columns: 1fr;
                 gap: 16px;
@@ -822,7 +923,7 @@
                 font-size: 2rem;
             }
 
-            /* Council */
+            /* ---- Council ---- */
             .council-stats {
                 grid-template-columns: 1fr 1fr;
                 gap: 12px;
@@ -834,7 +935,7 @@
                 font-size: 1.5rem;
             }
 
-            /* Forms */
+            /* ---- Forms ---- */
             .form-row {
                 grid-template-columns: 1fr;
                 gap: 12px;
@@ -843,7 +944,7 @@
                 padding: 20px 16px;
             }
 
-            /* Locked Content */
+            /* ---- Locked Content ---- */
             .locked-content {
                 padding: 24px 16px;
             }
@@ -852,7 +953,7 @@
                 max-height: 400px;
             }
 
-            /* About */
+            /* ---- About ---- */
             .about-text {
                 padding: 18px 16px;
             }
@@ -860,13 +961,13 @@
                 font-size: 0.9rem;
             }
 
-            /* Buttons */
+            /* ---- Buttons ---- */
             .btn {
                 padding: 8px 18px;
                 font-size: 0.85rem;
             }
 
-            /* Footer */
+            /* ---- Footer ---- */
             footer .container {
                 flex-direction: column;
                 text-align: center;
@@ -956,12 +1057,13 @@
                     <span class="logo-sub">Sustainable Approach for Equity</span>
                 </div>
             </div>
-            <button class="hamburger" id="menuToggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
-            <nav id="mainNav">
+
+            <!-- Desktop Navigation -->
+            <nav class="desktop-nav" id="desktopNav">
                 <a href="#about">About</a>
                 <a href="#projects">Projects</a>
-                <div class="dropdown" id="dropdownNav">
-                    <a href="javascript:void(0)" onclick="toggleDropdown()">SAFE Council <span class="arrow">▼</span></a>
+                <div class="dropdown">
+                    <a href="javascript:void(0)">SAFE Council <span class="arrow">▼</span></a>
                     <div class="dropdown-content">
                         <a href="#council">Overview</a>
                         <a href="#manifesto" onclick="navigateToLockedSection('manifesto')">Manifesto</a>
@@ -972,8 +1074,38 @@
                 <a href="#contact">Contact</a>
                 <a href="https://safefoundationafrica.org/product/general-single-donation/" target="_blank" class="btn btn-primary btn-small">Donate</a>
             </nav>
+
+            <!-- Hamburger Button -->
+            <button class="hamburger" id="menuToggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileOverlay"></div>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="#about" onclick="closeMobileMenu()">About</a>
+        <a href="#projects" onclick="closeMobileMenu()">Projects</a>
+
+        <!-- Mobile Dropdown -->
+        <div class="dropdown-mobile" id="mobileDropdown">
+            <a href="javascript:void(0)" onclick="toggleMobileDropdown()">
+                SAFE Council <span class="arrow" id="mobileArrow">▼</span>
+            </a>
+            <div class="dropdown-mobile-content" id="mobileDropdownContent">
+                <a href="#council" onclick="closeMobileMenu()">Overview</a>
+                <a href="#manifesto" onclick="closeMobileMenu(); navigateToLockedSection('manifesto')">Manifesto</a>
+                <a href="#documents" onclick="closeMobileMenu(); navigateToLockedSection('documents')">All Documents</a>
+            </div>
+        </div>
+
+        <a href="#forms" onclick="closeMobileMenu()">Join Us</a>
+        <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+        <a href="https://safefoundationafrica.org/product/general-single-donation/" target="_blank" class="btn btn-primary" onclick="closeMobileMenu()">Donate</a>
+    </div>
 
     <!-- ============================================================
     HERO
@@ -1320,26 +1452,48 @@
     ============================================================ -->
     <script>
         // ============================================================
-        // HAMBURGER
+        // MOBILE MENU
         // ============================================================
-        document.getElementById('menuToggle').addEventListener('click', function() {
-            document.getElementById('mainNav').classList.toggle('open');
-        });
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileNav = document.getElementById('mobileNav');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        const mobileDropdown = document.getElementById('mobileDropdown');
+        const mobileArrow = document.getElementById('mobileArrow');
 
-        document.querySelectorAll('#mainNav a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('mainNav').classList.remove('open');
-                // Close dropdown on mobile
-                document.getElementById('dropdownNav').classList.remove('open');
-            });
-        });
-
-        // ============================================================
-        // DROPDOWN TOGGLE (Mobile)
-        // ============================================================
-        function toggleDropdown() {
-            document.getElementById('dropdownNav').classList.toggle('open');
+        function openMobileMenu() {
+            mobileNav.classList.add('open');
+            mobileOverlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            menuToggle.innerHTML = '<i class="fas fa-times"></i>';
         }
+
+        function closeMobileMenu() {
+            mobileNav.classList.remove('open');
+            mobileOverlay.classList.remove('open');
+            document.body.style.overflow = '';
+            menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            // Close mobile dropdown if open
+            mobileDropdown.classList.remove('open');
+            mobileArrow.textContent = '▼';
+        }
+
+        function toggleMobileMenu() {
+            if (mobileNav.classList.contains('open')) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        }
+
+        function toggleMobileDropdown() {
+            mobileDropdown.classList.toggle('open');
+            mobileArrow.textContent = mobileDropdown.classList.contains('open') ? '▲' : '▼';
+        }
+
+        menuToggle.addEventListener('click', toggleMobileMenu);
+        mobileOverlay.addEventListener('click', closeMobileMenu);
+
+        // Close mobile menu when a link is clicked (handled by onclick in HTML)
 
         // ============================================================
         // NAVIGATE TO LOCKED SECTION
@@ -1349,11 +1503,10 @@
             if (!section) return;
 
             section.style.display = 'block';
-            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-            // Close mobile menu
-            document.getElementById('mainNav').classList.remove('open');
-            document.getElementById('dropdownNav').classList.remove('open');
+            // Use setTimeout to allow the section to render before scrolling
+            setTimeout(() => {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
 
             if (!donationMade) {
                 const lockContent = section.querySelector('.locked-content');
@@ -1609,6 +1762,13 @@
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 document.querySelectorAll('.modal.open').forEach(m => m.classList.remove('open'));
+            }
+        });
+
+        // Close mobile menu on window resize to desktop
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768 && mobileNav.classList.contains('open')) {
+                closeMobileMenu();
             }
         });
     </script>
