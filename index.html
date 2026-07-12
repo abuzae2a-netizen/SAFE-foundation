@@ -182,7 +182,7 @@
             flex-shrink: 0;
         }
         .logo img {
-            height: 40px;
+            height: 48px;
             width: auto;
             max-width: 100%;
         }
@@ -478,6 +478,12 @@
             font-size: 0.95rem;
         }
 
+        .hero-image {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+
         /* ============================================================
                    SECTIONS
                 ============================================================ */
@@ -732,6 +738,13 @@
             line-height: 1.8;
             color: var(--text-dark);
             margin-top: 8px;
+        }
+
+        .about-image {
+            max-width: 100%;
+            border-radius: 12px;
+            margin-top: 20px;
+            box-shadow: var(--shadow);
         }
 
         /* ============================================================
@@ -1058,7 +1071,7 @@
     <header>
         <div class="container">
             <div class="logo">
-                <img src="images/logo.png" alt="SAFE Council Logo" onerror="this.style.display='none'; this.outerHTML='<span style=\'background:#1a365d;color:#fff;padding:6px 10px;border-radius:8px;font-weight:800;font-size:0.8rem;\'>SAFE</span>';" />
+                <img src="council.jpg" alt="SAFE Council Logo" onerror="this.style.display='none'; this.outerHTML='<span style=\'background:#1a365d;color:#fff;padding:6px 10px;border-radius:8px;font-weight:800;font-size:0.8rem;\'>SAFE</span>';" />
                 <div>
                     <span class="logo-text">SAFE <span>Council</span></span>
                     <span class="logo-sub">Sustainable Approach for Equity</span>
@@ -1135,12 +1148,8 @@
                     <div class="stat"><span class="number">2024</span><div class="label">SAFE Council Est.</div></div>
                 </div>
             </div>
-            <div class="hero-card">
-                <i class="fas fa-check-circle"></i>
-                <h3>SAFE Council</h3>
-                <p>Governance & Civic Engagement Arm</p>
-                <p style="font-size:0.8rem;opacity:0.7;margin-top:6px;">Delegates from all parties · INEC accreditation pending</p>
-                <a href="#council" class="btn btn-accent" style="margin-top:12px;">Learn More</a>
+            <div>
+                <img src="PVC.jpg" alt="SAFE Council Community" class="hero-image" />
             </div>
         </div>
     </section>
@@ -1151,14 +1160,16 @@
     <section id="about">
         <div class="container text-center">
             <h2 class="section-title">About <span>Us</span></h2>
-            <p class="section-subtitle">SAFE Foundation is a non-profit, grassroots organization dedicated to creating opportunities, restoring hope, and building stronger communities across Northern Nigeria.</p>
+            <p class="section-subtitle">SAFE Council is a citizen-led initiative operating under the SAFE Foundation umbrella, dedicated to creating opportunities, restoring hope, and building stronger communities across Northern Nigeria.</p>
 
             <div class="about-text">
-                <h3>SAFE Council: Our Governance & Civic Engagement Arm</h3>
-                <p>SAFE Council is a citizen-led initiative, operating under the SAFE Foundation umbrella, that brings together Nigerians from all walks of life – political parties, universities, businesses, and communities – to support our government in delivering better results for our people.</p>
+                <h3>Our Governance & Civic Engagement Arm</h3>
+                <p>SAFE Council brings together Nigerians from all walks of life – political parties, universities, businesses, and communities – to support our government in delivering better results for our people.</p>
                 <p>We believe that when citizens and government work together, we build stronger communities and a more prosperous nation. Our role is to provide constructive, evidence-based feedback that helps public officials identify what's working, address challenges, and continuously improve service delivery.</p>
                 <p style="font-weight:600;color:var(--primary);">We are not an opposition group. We are <strong>partners in national development</strong> – committed to ensuring that public resources are managed effectively, policies are implemented efficiently, and every Nigerian feels the impact of good governance in their daily lives.</p>
             </div>
+
+            <img src="PVC1.jpg" alt="SAFE Council Community Engagement" class="about-image" />
 
             <h3 style="margin-top:30px;color:var(--primary);font-size:1.2rem;">Our Mission Areas</h3>
             <div class="mission-grid">
